@@ -1,0 +1,385 @@
+<!-- ================================================
+     SECCIÓN 3 - FLOWER TURBINES
+     ECO Consultor · ecoconsultor.com
+     Sección 03 — Tecnología "¿Cómo funciona?"
+     ─────────────────────────────
+     FIXES aplicados:
+     ✅ line-height: normal en reset (bloquea Elementor)
+     ✅ line-height !important en claim, features y stats
+     ✅ margin-bottom !important en elementos clave
+     ✅ ft4-scaled.png flotando (fondo transparente)
+     ✅ JS Nuclear: anula padding/margin de Elementor
+================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  #ft-sec3a, #ft-sec3a * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: normal; /* bloquea line-height heredado de Elementor */
+  }
+
+  #ft-sec3a {
+    position: relative;
+    width: 100%;
+    background: #0D1E24;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+  }
+
+  #ft-sec3a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(102,145,62,0.06) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Intro ── */
+  #ft-3a-intro {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 7% 4rem;
+    max-width: 900px;
+  }
+
+  .ft3a-section-num {
+    font-size: 11px; font-weight: 700; color: #66913E;
+    letter-spacing: 4px; text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+    margin-bottom: 32px !important;
+    display: flex; align-items: center; gap: 12px;
+    line-height: 1 !important;
+  }
+  .ft3a-section-num::after {
+    content: ''; display: block;
+    width: 40px; height: 1px;
+    background: #66913E; opacity: 0.5;
+  }
+
+  .ft3a-claim {
+    font-size: clamp(32px, 4.5vw, 64px);
+    font-weight: 800; color: #fff;
+    line-height: 1.15 !important;
+    letter-spacing: -1.5px;
+    margin-bottom: 28px !important;
+  }
+  .ft3a-claim span { color: #66913E; }
+
+  .ft3a-intro-desc {
+    font-size: clamp(15px, 1.3vw, 18px);
+    font-weight: 300; color: rgba(255,255,255,0.60);
+    line-height: 1.75 !important;
+    max-width: 620px;
+    font-family: 'Dosis', sans-serif;
+  }
+
+  /* ── Main grid ── */
+  #ft-3a-main {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 80vh;
+    padding: 0 7% 6rem;
+    gap: 6%;
+  }
+
+  /* Columna imagen */
+  #ft-3a-image-col {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #ft-3a-image-col::before {
+    content: '';
+    position: absolute;
+    width: 60%; height: 60%;
+    border-radius: 50%;
+    background: rgba(102,145,62,0.07);
+    filter: blur(60px);
+    z-index: 0;
+  }
+  #ft-3a-product-img {
+    position: relative;
+    z-index: 1;
+    width: 75%; max-width: 380px;
+    height: auto; display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 20px 60px rgba(0,0,0,0.5));
+    animation: ft3a-float 6s ease-in-out infinite;
+  }
+  @keyframes ft3a-float {
+    0%,100% { transform: translateY(0px);   }
+    50%      { transform: translateY(-16px); }
+  }
+
+  /* Columna contenido — features */
+  #ft-3a-content-col { display: flex; flex-direction: column; gap: 0; }
+
+  .ft3a-feature {
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .ft3a-feature:first-child { padding-top: 0; }
+  .ft3a-feature:last-child  { border-bottom: none; padding-bottom: 0; }
+
+  .ft3a-feature-num {
+    font-size: 10px; font-weight: 700; color: #66913E;
+    letter-spacing: 3px; text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+    margin-bottom: 10px !important;
+    line-height: 1 !important;
+  }
+
+  .ft3a-feature-title {
+    font-size: clamp(16px, 1.6vw, 22px);
+    font-weight: 700; color: #fff;
+    line-height: 1.25 !important;
+    margin-bottom: 12px !important;
+    letter-spacing: -0.3px;
+  }
+
+  .ft3a-feature-desc {
+    font-size: clamp(13px, 1vw, 15px);
+    font-weight: 300; color: rgba(255,255,255,0.58);
+    line-height: 1.7 !important;
+    font-family: 'Dosis', sans-serif;
+  }
+  .ft3a-feature-desc strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+  /* ── Stats row ── */
+  #ft-3a-stats {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    background: rgba(10,26,31,0.5);
+  }
+
+  .ft3a-stat {
+    padding: 40px 7%;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    display: flex; flex-direction: column;
+  }
+  .ft3a-stat:last-child { border-right: none; }
+
+  .ft3a-stat-num {
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 800; color: #fff;
+    letter-spacing: -1.5px;
+    line-height: 1 !important;
+    margin-bottom: 10px !important;
+  }
+  .ft3a-stat-num span { color: #66913E; }
+
+  .ft3a-stat-label {
+    font-size: 11px; font-weight: 400;
+    color: rgba(255,255,255,0.38);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+    margin-bottom: 10px !important;
+    line-height: 1.3 !important;
+  }
+
+  .ft3a-stat-detail {
+    font-size: 12px; font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    font-family: 'Dosis', sans-serif;
+    line-height: 1.6 !important;
+    margin-top: auto;
+  }
+
+  /* ── Certificaciones ── */
+  #ft-3a-certs {
+    position: relative;
+    z-index: 1;
+    padding: 40px 7%;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .ft3a-cert-label {
+    font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.35);
+    letter-spacing: 2px; text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+    margin-right: 8px;
+    line-height: 1 !important;
+  }
+
+  .ft3a-cert-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(102,145,62,0.08);
+    border: 1px solid rgba(102,145,62,0.22);
+    border-radius: 4px; padding: 9px 16px;
+    font-size: 11px; font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    font-family: 'Dosis', sans-serif; letter-spacing: 0.5px;
+    line-height: 1.2 !important;
+  }
+  .ft3a-cert-dot { width:5px; height:5px; border-radius:50%; background:#66913E; flex-shrink:0; }
+
+  /* ── Tablet ── */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    #ft-3a-main { grid-template-columns: 1fr 1fr; gap: 4%; padding-bottom: 4rem; }
+    #ft-3a-product-img { width: 85%; }
+    #ft-3a-stats { grid-template-columns: repeat(2, 1fr); }
+    .ft3a-stat:nth-child(2) { border-right: none; }
+    .ft3a-stat:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.06); }
+  }
+
+  /* ── Móvil ── */
+  @media (max-width: 768px) {
+    #ft-3a-intro { padding: 4rem 6% 2rem; }
+    #ft-3a-main {
+      grid-template-columns: 1fr;
+      padding: 0 6% 4rem;
+      gap: 3rem;
+      min-height: auto;
+    }
+    #ft-3a-image-col { order: -1; }
+    #ft-3a-product-img { width: 55%; }
+    #ft-3a-stats { grid-template-columns: repeat(2, 1fr); }
+    .ft3a-stat { padding: 28px 6%; }
+    .ft3a-stat:nth-child(2) { border-right: none; }
+    .ft3a-stat:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.06); }
+    #ft-3a-certs { padding: 28px 6%; gap: 12px; }
+  }
+</style>
+
+<!-- ════════════════ HTML ════════════════ -->
+<section id="ft-sec3a">
+
+  <div id="ft-3a-intro">
+    <div class="ft3a-section-num">02 — Tecnología</div>
+    <h2 class="ft3a-claim">
+      El viento no tiene<br>
+      una sola dirección.<br>
+      <span>Nuestra turbina, tampoco.</span>
+    </h2>
+    <p class="ft3a-intro-desc">
+      Las Flower Turbines son turbinas de eje vertical (VAWT) que capturan energía
+      del viento desde los 360° — sin necesidad de orientarse al viento como las turbinas
+      convencionales. Diseñadas para operar en entornos urbanos donde el viento es turbulento,
+      variable y de baja velocidad.
+    </p>
+  </div>
+
+  <div id="ft-3a-main">
+
+    <div id="ft-3a-image-col">
+      <img id="ft-3a-product-img"
+        src="https://ecoconsultor.com/wp-content/uploads/2026/04/ft4-scaled.png"
+        alt="Flower Turbines — detalle del rotor VAWT">
+    </div>
+
+    <div id="ft-3a-content-col">
+
+      <div class="ft3a-feature">
+        <div class="ft3a-feature-num">01</div>
+        <h3 class="ft3a-feature-title">Arranque en brisa mínima</h3>
+        <p class="ft3a-feature-desc">
+          La turbina comienza a girar con vientos de tan solo <strong>0.7 m/s</strong> —
+          el equivalente a una brisa casi imperceptible. Resiste vientos extremos
+          de hasta <strong>54 m/s</strong> (194 km/h) sin daños estructurales.
+        </p>
+      </div>
+
+      <div class="ft3a-feature">
+        <div class="ft3a-feature-num">02</div>
+        <h3 class="ft3a-feature-title">El Efecto Bouquet™ — patentado</h3>
+        <p class="ft3a-feature-desc">
+          Cuando se agrupan, las turbinas crean canales de viento entre sí que
+          aceleran el flujo y reducen la turbulencia. Cinco turbinas en configuración
+          Bouquet generan un <strong>228% más de energía</strong> que cinco turbinas separadas.
+          Es la única tecnología eólica que mejora con la proximidad.
+        </p>
+      </div>
+
+      <div class="ft3a-feature">
+        <div class="ft3a-feature-num">03</div>
+        <h3 class="ft3a-feature-title">Silencio absoluto. Cero impacto fauna.</h3>
+        <p class="ft3a-feature-desc">
+          Operan con un nivel de ruido <strong>inferior al del viento mismo</strong>.
+          Su diseño de bajas RPM y velocidad de punta de pala reducida las hace
+          completamente <strong>amigables con las aves</strong> — certificado
+          internacionalmente.
+        </p>
+      </div>
+
+      <div class="ft3a-feature">
+        <div class="ft3a-feature-num">04</div>
+        <h3 class="ft3a-feature-title">Materiales premium. Vida útil de 40 años.</h3>
+        <p class="ft3a-feature-desc">
+          Palas en <strong>termoplástico de alta resistencia</strong> (AL13 en aluminio anodizado).
+          Los modelos Small, Medium y 3M tienen una vida de diseño de <strong>40 años</strong>.
+          Mantenimiento mínimo: solo lubricación de rodamientos cada 1 a 3 años.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="ft-3a-stats">
+    <div class="ft3a-stat">
+      <span class="ft3a-stat-num">228<span>%</span></span>
+      <span class="ft3a-stat-label">Efecto Bouquet</span>
+      <span class="ft3a-stat-detail">Más energía en configuración de 5 turbinas vs. instalación individual</span>
+    </div>
+    <div class="ft3a-stat">
+      <span class="ft3a-stat-num">54<span> m/s</span></span>
+      <span class="ft3a-stat-label">Viento máximo</span>
+      <span class="ft3a-stat-detail">Resistencia estructural certificada a 194 km/h sin daños</span>
+    </div>
+    <div class="ft3a-stat">
+      <span class="ft3a-stat-num">40<span> años</span></span>
+      <span class="ft3a-stat-label">Vida de diseño</span>
+      <span class="ft3a-stat-detail">Modelos Small, Medium y 3M. Mantenimiento cada 1–3 años</span>
+    </div>
+    <div class="ft3a-stat">
+      <span class="ft3a-stat-num">2–10<span> yr</span></span>
+      <span class="ft3a-stat-label">Retorno inversión</span>
+      <span class="ft3a-stat-detail">Documentado. Caso Canadá: 4 años desplazando energía diésel</span>
+    </div>
+  </div>
+
+  <div id="ft-3a-certs">
+    <span class="ft3a-cert-label">Certificaciones</span>
+    <div class="ft3a-cert-badge"><div class="ft3a-cert-dot"></div>Solar Impulse Efficient Solution</div>
+    <div class="ft3a-cert-badge"><div class="ft3a-cert-dot"></div>Certificación CE — Europa</div>
+    <div class="ft3a-cert-badge"><div class="ft3a-cert-dot"></div>Premio Sostenibilidad · Gobierno Holandés ×2</div>
+  </div>
+
+</section>
+
+<!-- JS Anti-Elementor -->
+<script>
+(function () {
+  'use strict';
+  var el = document.getElementById('ft-sec3a');
+  if (!el) return;
+  var target = el.parentElement;
+  var levels = 0;
+  while (target && levels < 8) {
+    if (target === document.body || target === document.documentElement) break;
+    target.style.setProperty('padding',    '0',    'important');
+    target.style.setProperty('margin',     '0',    'important');
+    target.style.setProperty('max-width',  '100%', 'important');
+    target.style.setProperty('overflow',   'hidden','important');
+    target.style.setProperty('width',      '100%', 'important');
+    target.style.setProperty('box-sizing', 'border-box', 'important');
+    target = target.parentElement;
+    levels++;
+  }
+})();
+</script>
