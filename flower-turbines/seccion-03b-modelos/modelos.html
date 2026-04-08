@@ -1,0 +1,461 @@
+<!-- ================================================
+     SECCIÓN 3B - FLOWER TURBINES
+     ECO Consultor · ecoconsultor.com
+     Sección 03B — Tabla de modelos
+     ─────────────────────────────
+     FIX CRÍTICO:
+     ✅ Todos los selectores de clase prefijados con #ft-sec3b
+        para superar la especificidad del reset (#id > .class)
+        Reset: (0,1,0,0) — Prefijado: (0,1,1,0) → gana
+     ✅ line-height: normal en reset (bloquea Elementor)
+     ✅ JS Nuclear: anula padding/margin de Elementor
+================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ── Reset universal ── */
+  #ft-sec3b, #ft-sec3b * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+  }
+
+  #ft-sec3b {
+    position: relative;
+    width: 100%;
+    background: #0F2229;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    padding: 6rem 7%;
+  }
+
+  /* ── Header sección ── */
+  #ft-sec3b #ft-3b-header {
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  #ft-sec3b .ft3b-section-num {
+    font-size: 11px; font-weight: 700; color: #66913E;
+    letter-spacing: 4px; text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+    line-height: 1.2;
+  }
+  #ft-sec3b .ft3b-section-num::after {
+    content: ''; display: block;
+    width: 40px; height: 1px;
+    background: #66913E; opacity: 0.5;
+  }
+
+  #ft-sec3b .ft3b-title {
+    font-size: clamp(26px, 3vw, 42px);
+    font-weight: 800; color: #fff;
+    line-height: 1.15; letter-spacing: -1px;
+  }
+  #ft-sec3b .ft3b-title span { color: #66913E; }
+
+  #ft-sec3b .ft3b-header-note {
+    font-size: 13px; font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    font-family: 'Dosis', sans-serif;
+    line-height: 1.65; max-width: 280px;
+    text-align: right;
+  }
+
+  /* ════════════════════════════
+     TABLA
+  ════════════════════════════ */
+  #ft-sec3b #ft-3b-table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  #ft-sec3b #ft-3b-table {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: collapse;
+  }
+
+  /* ── Cabecera de modelos ── */
+  #ft-sec3b #ft-3b-table thead tr:first-child th {
+    padding: 28px 24px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    background: rgba(13,30,36,0.8);
+    vertical-align: bottom;
+  }
+
+  #ft-sec3b .th-empty {
+    width: 160px;
+    font-size: 10px; font-weight: 600;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 2px; text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+  }
+
+  #ft-sec3b .th-model { min-width: 130px; }
+
+  #ft-sec3b .th-model-tag {
+    display: inline-block;
+    font-size: 8px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 8px;
+  }
+
+  #ft-sec3b .th-model-name {
+    font-size: 15px; font-weight: 800;
+    color: #fff; line-height: 1.25;
+    display: block; margin-bottom: 6px;
+  }
+
+  #ft-sec3b .th-model-power {
+    font-size: 22px; font-weight: 800;
+    color: #66913E; letter-spacing: -0.5px;
+    display: block; line-height: 1.1;
+  }
+
+  #ft-sec3b .th-model-power-unit {
+    font-size: 12px; font-weight: 400;
+    color: rgba(102,145,62,0.7);
+  }
+
+  /* Columna destacada AL13 */
+  #ft-sec3b .th-featured {
+    background: rgba(102,145,62,0.07) !important;
+    border-left: 2px solid rgba(102,145,62,0.35) !important;
+    border-right: 2px solid rgba(102,145,62,0.35) !important;
+  }
+
+  #ft-sec3b .featured-badge {
+    display: inline-block;
+    background: #66913E; color: #fff;
+    font-size: 8px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+    padding: 3px 8px; border-radius: 2px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  /* ── Filas de datos ── */
+  #ft-sec3b #ft-3b-table tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.15s;
+  }
+  #ft-sec3b #ft-3b-table tbody tr:last-child { border-bottom: none; }
+  #ft-sec3b #ft-3b-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+  /* Celda label — FIX: prefijo #ft-sec3b supera el reset */
+  #ft-sec3b .td-label {
+    padding: 18px 24px;
+    font-size: 10px; font-weight: 600;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1.5px;
+    background: rgba(13,30,36,0.5);
+    white-space: nowrap;
+    font-family: 'Dosis', sans-serif;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  /* Celda valor — FIX: prefijo #ft-sec3b supera el reset */
+  #ft-sec3b .td-value {
+    padding: 18px 24px;
+    font-size: 14px; font-weight: 400;
+    color: rgba(255,255,255,0.80);
+    text-align: left;
+    font-family: 'Dosis', sans-serif;
+    vertical-align: middle;
+    line-height: 1.5;
+  }
+
+  #ft-sec3b .td-value strong {
+    color: #fff; font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  #ft-sec3b .td-value.td-featured {
+    background: rgba(102,145,62,0.05);
+    border-left: 2px solid rgba(102,145,62,0.2);
+    border-right: 2px solid rgba(102,145,62,0.2);
+  }
+
+  #ft-sec3b .td-check {
+    display: inline-flex; align-items: center; gap: 5px;
+    color: #66913E; font-weight: 600;
+    line-height: 1.2;
+  }
+  #ft-sec3b .td-check::before { content: '✓'; font-size: 13px; }
+
+  /* ── Fila CTA ── */
+  #ft-sec3b .tr-cta td {
+    padding: 24px 24px 28px;
+    background: rgba(13,30,36,0.3);
+  }
+  #ft-sec3b .tr-cta .td-label { background: transparent; }
+
+  #ft-sec3b .btn-model {
+    display: inline-block;
+    background: transparent; color: #66913E;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    border: 1px solid rgba(102,145,62,0.4);
+    border-radius: 3px; cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+    line-height: 1.2;
+  }
+  #ft-sec3b .btn-model:hover {
+    background: rgba(102,145,62,0.12);
+    border-color: #66913E;
+    text-decoration: none; color: #66913E;
+  }
+
+  #ft-sec3b .btn-model-featured {
+    background: #66913E; color: #fff;
+    border-color: #66913E;
+  }
+  #ft-sec3b .btn-model-featured:hover { background: #557a33; color: #fff; }
+
+  /* ── Nota al pie ── */
+  #ft-sec3b #ft-3b-footnote {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: flex-start; gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  #ft-sec3b .ft3b-note {
+    font-size: 11px; font-weight: 300;
+    color: rgba(255,255,255,0.30);
+    font-family: 'Dosis', sans-serif;
+    line-height: 1.65; flex: 1; min-width: 200px;
+  }
+  #ft-sec3b .ft3b-note strong {
+    color: rgba(255,255,255,0.50); font-weight: 600;
+  }
+
+  /* ── Tablet ── */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    #ft-sec3b { padding: 4rem 5%; }
+    #ft-sec3b .ft3b-header-note { text-align: left; max-width: 100%; }
+  }
+
+  /* ── Móvil ── */
+  @media (max-width: 768px) {
+    #ft-sec3b { padding: 4rem 5%; }
+    #ft-sec3b #ft-3b-header { flex-direction: column; align-items: flex-start; }
+    #ft-sec3b .ft3b-header-note { text-align: left; }
+    #ft-sec3b #ft-3b-table { min-width: 600px; }
+    #ft-sec3b .td-label { padding: 14px 16px; }
+    #ft-sec3b .td-value  { padding: 14px 16px; }
+    #ft-sec3b .th-empty  { width: 110px; }
+  }
+</style>
+
+<!-- ════════════════ HTML ════════════════ -->
+<section id="ft-sec3b">
+
+  <div id="ft-3b-header">
+    <div>
+      <div class="ft3b-section-num">03 — Modelos</div>
+      <h2 class="ft3b-title">
+        Elige la turbina<br>
+        <span>correcta para tu proyecto.</span>
+      </h2>
+    </div>
+    <p class="ft3b-header-note">
+      Todos los modelos operan desde <strong style="color:rgba(255,255,255,0.6)">0.7 m/s</strong> de viento
+      y resisten hasta <strong style="color:rgba(255,255,255,0.6)">54 m/s</strong>.
+      Palas en termoplástico. Certificación CE.
+    </p>
+  </div>
+
+  <div id="ft-3b-table-wrap">
+    <table id="ft-3b-table">
+      <thead>
+        <tr>
+          <th class="th-empty td-label">Característica</th>
+
+          <th class="th-model">
+            <span class="th-model-tag">Modelo</span>
+            <span class="th-model-name">Small Tulip</span>
+            <span class="th-model-power">100 <span class="th-model-power-unit">W</span></span>
+          </th>
+
+          <th class="th-model">
+            <span class="th-model-tag">Modelo</span>
+            <span class="th-model-name">Medium Tulip</span>
+            <span class="th-model-power">500 <span class="th-model-power-unit">W</span></span>
+          </th>
+
+          <th class="th-model">
+            <span class="th-model-tag">Modelo</span>
+            <span class="th-model-name">3-M Tulip</span>
+            <span class="th-model-power">1 <span class="th-model-power-unit">kW</span></span>
+          </th>
+
+          <th class="th-model">
+            <span class="th-model-tag">Modelo</span>
+            <span class="th-model-name">Large Tulip</span>
+            <span class="th-model-power">5 <span class="th-model-power-unit">kW</span></span>
+          </th>
+
+          <th class="th-model th-featured">
+            <span class="featured-badge">Modular</span>
+            <span class="th-model-name">AL13 Power Tower™</span>
+            <span class="th-model-power">0.5–10 <span class="th-model-power-unit">kW</span></span>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="td-label">Altura total</td>
+          <td class="td-value"><strong>1.4 – 2 m</strong></td>
+          <td class="td-value"><strong>2.9 – 3 m</strong></td>
+          <td class="td-value"><strong>4.07 m</strong></td>
+          <td class="td-value"><strong>6 m</strong></td>
+          <td class="td-value td-featured"><strong>Modular</strong><br>2.6 m / módulo</td>
+        </tr>
+
+        <tr>
+          <td class="td-label">Altura de pala</td>
+          <td class="td-value">1.15 m</td>
+          <td class="td-value">2 m</td>
+          <td class="td-value">3 m</td>
+          <td class="td-value">4.92 – 5 m</td>
+          <td class="td-value td-featured">1 m por módulo<br>(1 a 8 módulos)</td>
+        </tr>
+
+        <tr>
+          <td class="td-label">Diámetro / ancho</td>
+          <td class="td-value">0.55 m</td>
+          <td class="td-value">1.18 m</td>
+          <td class="td-value">—</td>
+          <td class="td-value">2.4 – 2.45 m</td>
+          <td class="td-value td-featured">0.545 m</td>
+        </tr>
+
+        <tr>
+          <td class="td-label">Peso</td>
+          <td class="td-value">16 – 20 kg</td>
+          <td class="td-value">178 – 227 kg</td>
+          <td class="td-value">400 kg</td>
+          <td class="td-value">1,000 kg</td>
+          <td class="td-value td-featured">~431 kg (4 mód.)<br>~585 kg (6 mód.)</td>
+        </tr>
+
+        <tr>
+          <td class="td-label">Material pala</td>
+          <td class="td-value">Termoplástico</td>
+          <td class="td-value">Termoplástico</td>
+          <td class="td-value">Termoplástico</td>
+          <td class="td-value">Termoplástico</td>
+          <td class="td-value td-featured"><strong>Aluminio anodizado</strong></td>
+        </tr>
+
+        <tr>
+          <td class="td-label">kWh / año (unidad)</td>
+          <td class="td-value">~260 kWh</td>
+          <td class="td-value">260 – 1,600 kWh</td>
+          <td class="td-value">—</td>
+          <td class="td-value">~8,000 kWh</td>
+          <td class="td-value td-featured"><strong>Hasta 10,000 kWh</strong><br>en cluster</td>
+        </tr>
+
+        <tr>
+          <td class="td-label">Vida de diseño</td>
+          <td class="td-value"><strong>40 años</strong></td>
+          <td class="td-value"><strong>40 años</strong></td>
+          <td class="td-value"><strong>40 años</strong></td>
+          <td class="td-value">20 años</td>
+          <td class="td-value td-featured">20 años</td>
+        </tr>
+
+        <tr>
+          <td class="td-label">Efecto Bouquet™</td>
+          <td class="td-value"><span class="td-check">Compatible</span></td>
+          <td class="td-value"><span class="td-check">Compatible</span></td>
+          <td class="td-value"><span class="td-check">Compatible</span></td>
+          <td class="td-value"><span class="td-check">Compatible</span></td>
+          <td class="td-value td-featured"><span class="td-check">Compatible</span></td>
+        </tr>
+
+        <tr>
+          <td class="td-label">ROI estimado</td>
+          <td class="td-value" colspan="4" style="color:rgba(255,255,255,0.45); font-size:12px;">
+            2 a 10 años según velocidad de viento local y tarifa eléctrica
+          </td>
+          <td class="td-value td-featured" style="font-size:12px;">
+            Desde <strong>4 años</strong> en aplicaciones industriales
+          </td>
+        </tr>
+
+        <tr class="tr-cta">
+          <td class="td-label"></td>
+          <td class="td-value"><a href="#contacto" class="btn-model">Cotizar</a></td>
+          <td class="td-value"><a href="#contacto" class="btn-model">Cotizar</a></td>
+          <td class="td-value"><a href="#contacto" class="btn-model">Cotizar</a></td>
+          <td class="td-value"><a href="#contacto" class="btn-model">Cotizar</a></td>
+          <td class="td-value td-featured"><a href="#contacto" class="btn-model btn-model-featured">Cotizar</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="ft-3b-footnote">
+    <p class="ft3b-note">
+      <strong>* Arranque universal:</strong> Todos los modelos operan desde 0.7 m/s y
+      resisten vientos de hasta 54 m/s (194 km/h) sin daños estructurales.
+    </p>
+    <p class="ft3b-note">
+      <strong>* Efecto Bouquet™:</strong> La eficiencia en cluster puede incrementar
+      la generación hasta un +228% comparado con unidades aisladas.
+      Distancia óptima entre ejes: 1.25× el diámetro del rotor.
+    </p>
+    <p class="ft3b-note">
+      <strong>* AL13 Power Tower™:</strong> Sistema modular apilable de 1 a 8 módulos
+      (500 W a 10 kW). Palas en aluminio anodizado de grado industrial.
+    </p>
+  </div>
+
+</section>
+
+<!-- JS Anti-Elementor -->
+<script>
+(function () {
+  'use strict';
+  var el = document.getElementById('ft-sec3b');
+  if (!el) return;
+  var target = el.parentElement;
+  var levels = 0;
+  while (target && levels < 8) {
+    if (target === document.body || target === document.documentElement) break;
+    target.style.setProperty('padding',    '0',    'important');
+    target.style.setProperty('margin',     '0',    'important');
+    target.style.setProperty('max-width',  '100%', 'important');
+    target.style.setProperty('overflow',   'hidden','important');
+    target.style.setProperty('width',      '100%', 'important');
+    target.style.setProperty('box-sizing', 'border-box', 'important');
+    target = target.parentElement;
+    levels++;
+  }
+})();
+</script>
