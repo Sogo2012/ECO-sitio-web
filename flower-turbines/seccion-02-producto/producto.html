@@ -1,0 +1,346 @@
+<!-- ================================================
+     SECCIÓN 2 - FLOWER TURBINES
+     ECO Consultor · ecoconsultor.com
+     Sección 02 — Producto
+     ─────────────────────────────
+     FIXES aplicados:
+     ✅ line-height: normal en reset (bloquea Elementor)
+     ✅ line-height !important en título, párrafo y stats
+     ✅ align-items: center → contenido centrado verticalmente
+     ✅ ft2-title margin-bottom: 10px → 20px (era muy compacto)
+     ✅ ft2-subtitle-brand margin-top: 8px → 14px
+     ✅ Espaciado entre bloques aumentado uniformemente
+     ✅ JS Nuclear: anula padding/margin de Elementor
+================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ── Reset universal ── */
+  #ft-sec2, #ft-sec2 * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: normal; /* bloquea line-height heredado de Elementor */
+  }
+
+  #ft-sec2 {
+    position: relative;
+    width: 100%;
+    background: #0A1A1F;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+  }
+
+  /* ── Grid 2 columnas ── */
+  #ft-sec2-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    align-items: stretch;
+  }
+
+  /* ══ COLUMNA IZQUIERDA — Video ══ */
+  #ft-sec2-video-col {
+    position: relative;
+    overflow: hidden;
+    background: #050E12;
+  }
+
+  #ft-sec2-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  #ft-sec2-video-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      270deg,
+      rgba(10,26,31,0.65) 0%,
+      rgba(10,26,31,0.05) 60%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  #ft-sec2-video-badge {
+    position: absolute;
+    bottom: 32px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(10,26,31,0.7);
+    border: 1px solid rgba(102,145,62,0.35);
+    border-radius: 20px; padding: 8px 18px;
+    white-space: nowrap;
+  }
+  .ft2-badge-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #66913E;
+    animation: ft2-pulse 2s ease-in-out infinite;
+  }
+  @keyframes ft2-pulse {
+    0%,100% { opacity:1; transform:scale(1);   }
+    50%     { opacity:0.5; transform:scale(1.5); }
+  }
+  .ft2-badge-text {
+    font-size: 10px; color: rgba(255,255,255,0.6);
+    font-family: 'Dosis',sans-serif;
+    letter-spacing: 1.5px; font-weight: 600; text-transform: uppercase;
+  }
+
+  /* ══ COLUMNA DERECHA — Contenido ══ */
+  #ft-sec2-content-col {
+    display: flex;
+    align-items: center;   /* centra el bloque de contenido verticalmente */
+    padding: 6rem 8%;
+    background: #0A1A1F;
+    overflow-y: auto;
+  }
+
+  #ft-sec2-content { width: 100%; }
+
+  /* Número de sección */
+  .ft2-section-num {
+    font-size: 11px; font-weight: 700; color: #66913E;
+    letter-spacing: 4px; text-transform: uppercase;
+    font-family: 'Dosis',sans-serif;
+    margin-bottom: 36px;   /* era 28px */
+    display: flex; align-items: center; gap: 12px;
+  }
+  .ft2-section-num::after {
+    content: ''; display: block;
+    width: 40px; height: 1px;
+    background: #66913E; opacity: 0.5;
+  }
+
+  /* Título */
+  .ft2-title {
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 800; color: #fff;
+    line-height: 1.2 !important;  /* !important vence a Elementor */
+    letter-spacing: -1px;
+    margin-bottom: 20px;           /* era 10px — demasiado compacto */
+  }
+  .ft2-title span { color: #66913E; }
+
+  /* Subtítulo marca */
+  .ft2-subtitle-brand {
+    font-size: clamp(10px, 0.9vw, 12px);
+    font-weight: 400; color: rgba(255,255,255,0.32);
+    font-family: 'Dosis',sans-serif;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    margin-top: 14px;      /* era 8px */
+    margin-bottom: 44px;   /* era 36px */
+    display: block;
+  }
+
+  /* Párrafo */
+  .ft2-desc {
+    font-size: clamp(14px, 1.1vw, 16px);
+    font-weight: 300; color: rgba(255,255,255,0.65);
+    line-height: 1.75 !important;  /* aumentado de 1.6 + !important */
+    margin-bottom: 44px;           /* era 36px */
+    font-family: 'Dosis',sans-serif;
+    letter-spacing: 0.2px; max-width: 480px;
+  }
+  .ft2-desc strong { color: rgba(255,255,255,0.90); font-weight: 600; }
+
+  /* Pills */
+  .ft2-pills {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 44px;   /* era 40px */
+  }
+  .ft2-pill {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(102,145,62,0.08);
+    border: 1px solid rgba(102,145,62,0.25);
+    border-radius: 20px; padding: 10px 18px;
+    font-size: 11px; font-weight: 600;
+    color: rgba(255,255,255,0.75);
+    font-family: 'Dosis',sans-serif; letter-spacing: 0.5px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .ft2-pill:hover { background:rgba(102,145,62,0.16); border-color:rgba(102,145,62,0.5); }
+  .ft2-pill-dot { width:6px; height:6px; border-radius:50%; background:#66913E; flex-shrink:0; }
+
+  /* Divisor */
+  .ft2-divider {
+    width: 100%; height: 1px;
+    background: rgba(255,255,255,0.07);
+    margin-bottom: 44px;   /* era 36px */
+  }
+
+  /* Mini stats */
+  .ft2-mini-stats { display:flex; gap:32px; margin-bottom:52px; flex-wrap:wrap; } /* era 44px */
+  .ft2-mini-stat  { display:flex; flex-direction:column; }
+  .ft2-mini-num {
+    font-size: 30px; font-weight: 800; color: #fff;
+    letter-spacing: -1px; line-height: 1.2 !important; /* !important */
+    margin-bottom: 8px;    /* era 6px */
+  }
+  .ft2-mini-num span { color:#66913E; font-size:20px; }
+  .ft2-mini-label {
+    font-size: 10px; font-weight: 400;
+    color: rgba(255,255,255,0.38);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    font-family: 'Dosis',sans-serif;
+    line-height: 1.4 !important;
+  }
+
+  /* CTA */
+  .ft2-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: #66913E; text-decoration: none;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; font-family: 'Montserrat',sans-serif;
+    border-bottom: 1px solid rgba(102,145,62,0.35); padding-bottom: 4px;
+    transition: gap 0.2s, border-color 0.2s;
+  }
+  .ft2-cta:hover { gap:16px; border-color:#66913E; text-decoration:none; color:#66913E; }
+  .ft2-cta-arrow { font-size:16px; transition:transform 0.2s; }
+  .ft2-cta:hover .ft2-cta-arrow { transform:translateX(4px); }
+
+  /* ══ TABLET (769px - 1024px) ══ */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    #ft-sec2-inner {
+      grid-template-columns: 45% 55%;
+      min-height: auto;
+    }
+    #ft-sec2-video-col { min-height: 70vh; }
+    #ft-sec2-video {
+      object-fit: contain;
+      object-position: center;
+    }
+    #ft-sec2-content-col { padding: 4rem 5%; align-items: center; }
+    .ft2-title        { font-size: clamp(22px, 2.8vw, 34px); }
+    .ft2-desc         { font-size: 14px; margin-bottom: 32px; }
+    .ft2-pills        { margin-bottom: 32px; gap: 7px; }
+    .ft2-pill         { padding: 8px 14px; font-size: 10px; }
+    .ft2-mini-stats   { gap: 20px; margin-bottom: 36px; }
+    .ft2-mini-num     { font-size: 24px; }
+    .ft2-section-num  { margin-bottom: 24px; }
+    .ft2-divider      { margin-bottom: 32px; }
+    .ft2-subtitle-brand { margin-bottom: 32px; }
+  }
+
+  /* ══ MÓVIL ≤768px ══ */
+  @media (max-width: 768px) {
+    #ft-sec2-inner {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    #ft-sec2-video-col { height: 70vh; min-height: 400px; }
+    #ft-sec2-video {
+      object-fit: cover;
+      object-position: top center;
+    }
+    #ft-sec2-video-overlay {
+      background: linear-gradient(180deg, transparent 55%, rgba(10,26,31,0.85) 100%);
+    }
+    #ft-sec2-content-col { padding: 4rem 5%; align-items: flex-start; }
+    #ft-sec2-content     { max-width: 100%; }
+    .ft2-mini-stats { gap: 20px; }
+    .ft2-pills      { gap: 8px; }
+  }
+</style>
+
+<!-- ════════════════ HTML ════════════════ -->
+<section id="ft-sec2">
+  <div id="ft-sec2-inner">
+
+    <!-- Columna izquierda: Video vertical -->
+    <div id="ft-sec2-video-col">
+      <video id="ft-sec2-video" autoplay muted loop playsinline preload="auto">
+        <source src="https://ecoconsultor.com/wp-content/uploads/2026/04/ft-video-vertical-2-ai.mp4" type="video/mp4">
+      </video>
+      <div id="ft-sec2-video-overlay"></div>
+      <div id="ft-sec2-video-badge">
+        <div class="ft2-badge-dot"></div>
+        <span class="ft2-badge-text">Flower Turbines en acción</span>
+      </div>
+    </div>
+
+    <!-- Columna derecha: Contenido -->
+    <div id="ft-sec2-content-col">
+      <div id="ft-sec2-content">
+
+        <div class="ft2-section-num">01 — Producto</div>
+
+        <h2 class="ft2-title">
+          La turbina que<br>
+          <span>el mundo necesita.</span>
+        </h2>
+        <span class="ft2-subtitle-brand">Flower Turbines · Eje Vertical VAWT</span>
+
+        <p class="ft2-desc">
+          Las Flower Turbines son turbinas eólicas de <strong>eje vertical</strong>
+          diseñadas para entornos urbanos y edificios. Capturan el viento desde
+          <strong>cualquier dirección</strong>, operan en silencio absoluto y pueden
+          instalarse en <strong>racimos</strong> que se potencian mutuamente —
+          el <strong>Efecto Bouquet</strong>.
+        </p>
+
+        <div class="ft2-pills">
+          <div class="ft2-pill"><div class="ft2-pill-dot"></div>Sin ruido</div>
+          <div class="ft2-pill"><div class="ft2-pill-dot"></div>Sin riesgo para aves</div>
+          <div class="ft2-pill"><div class="ft2-pill-dot"></div>Viento bajo: 0.7 m/s</div>
+          <div class="ft2-pill"><div class="ft2-pill-dot"></div>Efecto Bouquet</div>
+          <div class="ft2-pill"><div class="ft2-pill-dot"></div>Diseño premium</div>
+          <div class="ft2-pill"><div class="ft2-pill-dot"></div>360° captación</div>
+        </div>
+
+        <div class="ft2-divider"></div>
+
+        <div class="ft2-mini-stats">
+          <div class="ft2-mini-stat">
+            <span class="ft2-mini-num">+40<span>%</span></span>
+            <span class="ft2-mini-label">Eficiencia en Bouquet</span>
+          </div>
+          <div class="ft2-mini-stat">
+            <span class="ft2-mini-num">25<span>+</span></span>
+            <span class="ft2-mini-label">Años vida útil</span>
+          </div>
+          <div class="ft2-mini-stat">
+            <span class="ft2-mini-num">0<span> dB</span></span>
+            <span class="ft2-mini-label">Ruido perceptible</span>
+          </div>
+        </div>
+
+        <a href="#ft-specs" class="ft2-cta">
+          Ver especificaciones técnicas
+          <span class="ft2-cta-arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- JS Anti-Elementor -->
+<script>
+(function () {
+  'use strict';
+  var sec2 = document.getElementById('ft-sec2');
+  if (!sec2) return;
+  var target = sec2.parentElement;
+  var levels = 0;
+  var maxLevels = 8;
+  while (target && levels < maxLevels) {
+    if (target === document.body || target === document.documentElement) break;
+    target.style.setProperty('padding',    '0',    'important');
+    target.style.setProperty('margin',     '0',    'important');
+    target.style.setProperty('max-width',  '100%', 'important');
+    target.style.setProperty('overflow',   'hidden','important');
+    target.style.setProperty('width',      '100%', 'important');
+    target.style.setProperty('box-sizing', 'border-box', 'important');
+    target = target.parentElement;
+    levels++;
+  }
+})();
+</script>
