@@ -4,10 +4,11 @@
      Sección 01 — Hero principal
      ─────────────────────────────
      FIXES aplicados:
-     ✅ line-height: 1.4 en logo-name (evita colapso con subtítulo)
-     ✅ margin-top: 6px en logo-sub (separación logo badge)
-     ✅ padding-top: 5rem en hero-content (separación del logo)
-     ✅ margin-bottom: 36px en ft-tag (aire entre tag y título)
+     ✅ line-height: normal en reset universal (bloquea Elementor)
+     ✅ line-height: 1.4 !important en logo-name
+     ✅ margin-top: 6px !important en logo-sub
+     ✅ padding-top: 0 en hero-content (evita empujar contenido al fondo)
+     ✅ margin-bottom: 36px en ft-tag
      ✅ margin-bottom: 28px y line-height: 1.1 en ft-title
      ✅ JS Nuclear: anula padding/margin de Elementor
 ================================================ -->
@@ -20,6 +21,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    line-height: normal; /* bloquea line-height heredado de Elementor */
   }
 
   #ft-hero {
@@ -99,8 +101,8 @@
   }
   .ft-logo-divider { width:1px; height:26px; background:rgba(255,255,255,0.15); flex-shrink:0; }
   .ft-logo-text    { display:flex; flex-direction:column; }
-  .ft-logo-name    { font-size:13px; font-weight:700; color:#fff; letter-spacing:1px; line-height:1.4; }
-  .ft-logo-sub     { font-size:9px; font-weight:400; color:rgba(255,255,255,0.45); letter-spacing:2px; text-transform:uppercase; font-family:'Dosis',sans-serif; margin-top:6px; }
+  .ft-logo-name    { font-size:13px; font-weight:700; color:#fff; letter-spacing:1px; line-height:1.4 !important; }
+  .ft-logo-sub     { font-size:9px; font-weight:400; color:rgba(255,255,255,0.45); letter-spacing:2px; text-transform:uppercase; font-family:'Dosis',sans-serif; margin-top:6px !important; }
   .ft-official-badge {
     font-size:8px; font-weight:700; color:#66913E;
     letter-spacing:2px; text-transform:uppercase;
@@ -140,7 +142,7 @@
     max-width: 680px;
     margin-top: auto;
     margin-bottom: auto;
-    padding-top: 5rem;
+    padding-top: 0;       /* quitado el 5rem que empujaba el contenido al fondo */
     padding-bottom: 2rem;
   }
 
