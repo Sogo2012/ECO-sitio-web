@@ -1,0 +1,397 @@
+<!-- ================================================
+     HERO SECTION - FLOWER TURBINES v5
+     ECO Consultor · ecoconsultor.com
+     Sección 01 — Hero principal
+     ─────────────────────────────
+     FIXES aplicados:
+     ✅ line-height: 1.4 en logo-name (evita colapso con subtítulo)
+     ✅ margin-top: 6px en logo-sub (separación logo badge)
+     ✅ padding-top: 5rem en hero-content (separación del logo)
+     ✅ margin-bottom: 36px en ft-tag (aire entre tag y título)
+     ✅ margin-bottom: 28px y line-height: 1.1 en ft-title
+     ✅ JS Nuclear: anula padding/margin de Elementor
+================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  #ft-hero, #ft-hero * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #ft-hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #0D1E24;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 220px;
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-bottom: 0;
+  }
+
+  /* ── Video de fondo (desktop) ── */
+  #ft-hero-video {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* ── Ken Burns (móvil) ── */
+  #ft-hero-kenburns {
+    display: none;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: url('https://ecoconsultor.com/wp-content/uploads/2026/04/ft5-scaled.png');
+    background-size: cover;
+    background-position: top center;
+    animation: kenburns 14s ease-in-out infinite alternate;
+    will-change: transform;
+    pointer-events: none;
+  }
+  @keyframes kenburns {
+    0%   { transform: scale(1.00) translate(0%,   0%);   }
+    33%  { transform: scale(1.06) translate(-1%,  -1%);  }
+    66%  { transform: scale(1.04) translate(1%,  -0.5%); }
+    100% { transform: scale(1.08) translate(-0.5%, 1%);  }
+  }
+
+  /* ── Overlay ── */
+  #ft-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(13,30,36,0.92) 0%,
+      rgba(13,30,36,0.62) 55%,
+      rgba(13,30,36,0.20) 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* ── Logo badge ── */
+  #ft-logo-badge {
+    position: absolute;
+    top: 36px;
+    left: 7%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  #ft-logo-badge img {
+    width: 42px; height: 42px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(102,145,62,0.3));
+  }
+  .ft-logo-divider { width:1px; height:26px; background:rgba(255,255,255,0.15); flex-shrink:0; }
+  .ft-logo-text    { display:flex; flex-direction:column; }
+  .ft-logo-name    { font-size:13px; font-weight:700; color:#fff; letter-spacing:1px; line-height:1.4; }
+  .ft-logo-sub     { font-size:9px; font-weight:400; color:rgba(255,255,255,0.45); letter-spacing:2px; text-transform:uppercase; font-family:'Dosis',sans-serif; margin-top:6px; }
+  .ft-official-badge {
+    font-size:8px; font-weight:700; color:#66913E;
+    letter-spacing:2px; text-transform:uppercase;
+    font-family:'Dosis',sans-serif;
+    border:1px solid rgba(102,145,62,0.4);
+    border-radius:2px; padding:3px 8px; flex-shrink:0;
+  }
+
+  /* ── Badge "En movimiento" ── */
+  #ft-video-badge {
+    position: absolute;
+    top: 46px; right: 7%;
+    z-index: 5;
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px; padding: 7px 16px;
+  }
+  .ft-badge-dot {
+    width:7px; height:7px; border-radius:50%;
+    background:#66913E;
+    animation: ft-pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes ft-pulse {
+    0%,100% { opacity:1; transform:scale(1);   }
+    50%     { opacity:0.5; transform:scale(1.4); }
+  }
+  .ft-badge-text {
+    font-size:10px; color:rgba(255,255,255,0.55);
+    font-family:'Dosis',sans-serif; letter-spacing:1px; font-weight:600;
+  }
+
+  /* ── Contenido central ── */
+  #ft-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 680px;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+  }
+
+  .ft-tag {
+    display: inline-block;
+    background: #66913E; color: #fff;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 3px; padding: 6px 16px;
+    border-radius: 2px; margin-bottom: 36px;
+    text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+  }
+
+  .ft-title {
+    font-size: clamp(36px, 5.5vw, 72px);
+    font-weight: 800; color: #fff;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 28px;
+  }
+  .ft-title span { color: #66913E; }
+
+  .ft-subtitle {
+    font-size: clamp(14px, 1.2vw, 17px);
+    font-weight: 300; color: rgba(255,255,255,0.65);
+    line-height: 1.75; margin-bottom: 40px;
+    font-family: 'Dosis', sans-serif;
+    max-width: 460px; letter-spacing: 0.3px;
+  }
+
+  .ft-ctas { display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+
+  .ft-btn-primary {
+    display: inline-block; background: #66913E; color: #fff;
+    text-decoration: none; padding: 15px 34px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    border-radius: 3px; border: none; cursor: pointer;
+    transition: background 0.25s, transform 0.15s;
+  }
+  .ft-btn-primary:hover { background:#557a33; transform:translateY(-1px); color:#fff; text-decoration:none; }
+
+  .ft-btn-secondary {
+    display: inline-block; background: transparent;
+    color: rgba(255,255,255,0.85); text-decoration: none;
+    padding: 15px 34px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    border-radius: 3px; border:1px solid rgba(255,255,255,0.35);
+    cursor: pointer; transition: border-color 0.25s, background 0.25s;
+  }
+  .ft-btn-secondary:hover { border-color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.06); color:#fff; text-decoration:none; }
+
+  /* ── Estadísticas ── */
+  #ft-hero-stats {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    margin-left: -7%;
+    margin-right: -7%;
+    padding: 24px 7%;
+    background: rgba(13,30,36,0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .ft-stat {
+    flex: 1; display: flex; flex-direction: column;
+    padding-right: 24px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    margin-right: 24px;
+    min-width: 100px;
+  }
+  .ft-stat:last-child { border-right:none; margin-right:0; padding-right:0; }
+
+  .ft-stat-num {
+    font-size: clamp(18px, 2vw, 26px);
+    font-weight: 800; color: #66913E;
+    letter-spacing: -0.5px; line-height: 1; margin-bottom: 6px;
+  }
+  .ft-stat-label {
+    font-size: 10px; font-weight: 400;
+    color: rgba(255,255,255,0.40);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+  }
+
+  /* ── Scroll hint ── */
+  #ft-scroll-hint {
+    position: absolute; right: 7%; bottom: 100px;
+    z-index: 4; display:flex; flex-direction:column;
+    align-items:center; gap:8px;
+  }
+  .ft-scroll-text {
+    font-size:9px; color:rgba(255,255,255,0.28);
+    letter-spacing:3px; text-transform:uppercase;
+    font-family:'Dosis',sans-serif; writing-mode:vertical-rl;
+  }
+  .ft-scroll-line {
+    width:1px; height:40px;
+    background:linear-gradient(to bottom, rgba(102,145,62,0.7), transparent);
+    animation:ft-scrolldown 2s ease-in-out infinite;
+  }
+  @keyframes ft-scrolldown {
+    0%   { transform:scaleY(0); transform-origin:top;    }
+    50%  { transform:scaleY(1); transform-origin:top;    }
+    51%  { transform:scaleY(1); transform-origin:bottom; }
+    100% { transform:scaleY(0); transform-origin:bottom; }
+  }
+
+  /* ── Responsive móvil ≤768px ── */
+  @media (max-width: 768px) {
+    #ft-hero {
+      min-height: 100svh;
+      padding-top: 120px;
+      padding-left: 6%;
+      padding-right: 6%;
+    }
+    #ft-hero-video    { display: none; }
+    #ft-hero-kenburns { display: block; }
+    #ft-hero-overlay  {
+      background: linear-gradient(180deg,
+        rgba(13,30,36,0.78) 0%,
+        rgba(13,30,36,0.70) 60%,
+        rgba(13,30,36,0.92) 100%
+      );
+    }
+    #ft-logo-badge { left:6%; top:22px; gap:8px; }
+    #ft-logo-badge img { width:34px; height:34px; }
+    .ft-logo-name  { font-size:11px; }
+    .ft-logo-sub   { font-size:8px; }
+    .ft-official-badge { font-size:7px; padding:2px 6px; }
+    #ft-video-badge { display:none; }
+    #ft-scroll-hint { display:none; }
+    #ft-hero-content {
+      padding-top: 3rem;
+      padding-bottom: 1rem;
+    }
+    #ft-hero-stats {
+      margin-left: -6%; margin-right: -6%;
+      padding-left: 6%; padding-right: 6%;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      margin-top: 2rem;
+    }
+    .ft-stat { min-width:80px; }
+  }
+</style>
+
+<!-- ════════════ HTML ════════════ -->
+<section id="ft-hero">
+
+  <!-- Video 4K desktop -->
+  <video id="ft-hero-video" autoplay muted loop playsinline preload="auto"
+    poster="https://ecoconsultor.com/wp-content/uploads/2026/04/ft1.webp">
+    <source src="https://ecoconsultor.com/wp-content/uploads/2026/04/flower-turbines-hero.mp4" type="video/mp4">
+  </video>
+
+  <!-- Ken Burns móvil -->
+  <div id="ft-hero-kenburns"></div>
+
+  <!-- Overlay -->
+  <div id="ft-hero-overlay"></div>
+
+  <!-- Logo badge -->
+  <div id="ft-logo-badge">
+    <img src="https://ecoconsultor.com/wp-content/uploads/2026/04/flower-turbines-logo.png" alt="Flower Turbines">
+    <div class="ft-logo-divider"></div>
+    <div class="ft-logo-text">
+      <span class="ft-logo-name">Flower Turbines</span>
+      <span class="ft-logo-sub">Distribuidor oficial · Latinoamérica</span>
+    </div>
+    <div class="ft-logo-divider"></div>
+    <span class="ft-official-badge">ECO Consultor</span>
+  </div>
+
+  <!-- Badge video -->
+  <div id="ft-video-badge">
+    <div class="ft-badge-dot"></div>
+    <span class="ft-badge-text">En movimiento · 4K</span>
+  </div>
+
+  <!-- Contenido central -->
+  <div id="ft-hero-content">
+    <div class="ft-tag">Energía Limpia · Latinoamérica</div>
+    <h1 class="ft-title">
+      Energía del viento.<br>
+      <span>Redefinida.</span>
+    </h1>
+    <p class="ft-subtitle">
+      Turbinas eólicas verticales de diseño premium para hoteles boutique,
+      corporativos y Zonas Francas. Silenciosas, elegantes y eficientes
+      desde 0.7 m/s de viento. Soluciones para toda Latinoamérica.
+    </p>
+    <div class="ft-ctas">
+      <a href="#ft-producto" class="ft-btn-primary">Conocer más</a>
+      <a href="#contacto"    class="ft-btn-secondary">Solicitar cotización</a>
+    </div>
+  </div>
+
+  <!-- Estadísticas -->
+  <div id="ft-hero-stats">
+    <div class="ft-stat">
+      <span class="ft-stat-num">0.7 m/s</span>
+      <span class="ft-stat-label">Viento mínimo</span>
+    </div>
+    <div class="ft-stat">
+      <span class="ft-stat-num">0 dB</span>
+      <span class="ft-stat-label">Ruido perceptible</span>
+    </div>
+    <div class="ft-stat">
+      <span class="ft-stat-num">25+ años</span>
+      <span class="ft-stat-label">Vida útil</span>
+    </div>
+    <div class="ft-stat">
+      <span class="ft-stat-num">360°</span>
+      <span class="ft-stat-label">Captación del viento</span>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div id="ft-scroll-hint">
+    <span class="ft-scroll-text">scroll</span>
+    <div class="ft-scroll-line"></div>
+  </div>
+
+</section>
+
+<!-- JS Anti-Elementor -->
+<script>
+(function () {
+  'use strict';
+  var hero = document.getElementById('ft-hero');
+  if (!hero) return;
+  var target = hero.parentElement;
+  var levels = 0;
+  var maxLevels = 8;
+  while (target && levels < maxLevels) {
+    if (target === document.body || target === document.documentElement) break;
+    target.style.setProperty('padding',    '0',    'important');
+    target.style.setProperty('margin',     '0',    'important');
+    target.style.setProperty('max-width',  '100%', 'important');
+    target.style.setProperty('overflow',   'hidden','important');
+    target.style.setProperty('width',      '100%', 'important');
+    target.style.setProperty('box-sizing', 'border-box', 'important');
+    target = target.parentElement;
+    levels++;
+  }
+})();
+</script>
