@@ -1,0 +1,655 @@
+<!-- ================================================
+     CONTACTO SECTION - FLOWER TURBINES v1
+     ECO Consultor · ecoconsultor.com
+     Sección 06 — Formulario de captura de leads
+     ─────────────────────────────
+     REGLAS APLICADAS:
+     ✅ REGLA 1 — Especificidad CSS con prefijo #ft-form
+     ✅ REGLA 2 — Fetch con mode:'no-cors' a Google Apps Script
+     ✅ REGLA 3 — Honeypot anti-spam (campo oculto con CSS)
+     ✅ REGLA 4 — Timestamp zona horaria Costa Rica
+     ✅ REGLA 5 — Payload enriquecido para CRM
+     ✅ REGLA 6 — Fondo ft5-scaled.png con opacity 0.06
+     ✅ REGLA 7 — Comentario WEBHOOK explícito
+================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ══════════════════════════════════════════════
+     RESET UNIVERSAL
+  ══════════════════════════════════════════════ */
+  #ft-form, #ft-form * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+  }
+
+  /* ══════════════════════════════════════════════
+     CONTENEDOR PRINCIPAL
+  ══════════════════════════════════════════════ */
+  #ft-form {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #0D1E24;
+    font-family: 'Montserrat', sans-serif;
+    padding: 100px 7% 80px 7%;
+  }
+
+  /* ── Fondo con imagen (REGLA 6) ── */
+  #ft-form::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://ecoconsultor.com/wp-content/uploads/2026/04/ft5-scaled.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.06;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* ── Overlay oscuro ── */
+  #ft-form::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(13,30,36,0.85) 0%, rgba(13,30,36,0.92) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* ── Contenedor del formulario ── */
+  #ft-form .ft-form-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 900px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 60px 50px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* ── Header ── */
+  #ft-form .ft-form-tag {
+    display: inline-block;
+    background: #66913E;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+  }
+
+  #ft-form .ft-form-title {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+
+  #ft-form .ft-form-subtitle {
+    font-size: clamp(14px, 1.1vw, 16px);
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── Grid de campos ── */
+  #ft-form .ft-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 16px;
+    margin-bottom: 0;
+  }
+
+  #ft-form .ft-form-field {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #ft-form .ft-form-field.full-width {
+    grid-column: 1 / -1;
+  }
+
+  /* ── Labels accesibles (visualmente ocultos) ── */
+  #ft-form .ft-form-label {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* ── Inputs ── */
+  #ft-form .ft-form-input,
+  #ft-form .ft-form-select,
+  #ft-form .ft-form-textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 3px;
+    padding: 14px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+    outline: none;
+    min-height: 48px;
+  }
+
+  #ft-form .ft-form-input::placeholder,
+  #ft-form .ft-form-textarea::placeholder {
+    color: rgba(255,255,255,0.35);
+  }
+
+  #ft-form .ft-form-input:hover,
+  #ft-form .ft-form-select:hover,
+  #ft-form .ft-form-textarea:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.18);
+  }
+
+  #ft-form .ft-form-input:focus,
+  #ft-form .ft-form-select:focus,
+  #ft-form .ft-form-textarea:focus {
+    border-color: rgba(102,145,62,0.6);
+    box-shadow: 0 0 0 3px rgba(102,145,62,0.1);
+    background: rgba(255,255,255,0.09);
+  }
+
+  /* ── Select ── */
+  #ft-form .ft-form-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath stroke='%2366913E' stroke-width='1.5' fill='none' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-color: rgba(255,255,255,0.06);
+    padding-right: 40px;
+    cursor: pointer;
+    color: rgba(255,255,255,0.35);
+  }
+
+  #ft-form .ft-form-select.has-value {
+    color: #fff;
+  }
+
+  #ft-form .ft-form-select option {
+    background: #0D1E24;
+    color: #fff;
+  }
+
+  /* ── Textarea ── */
+  #ft-form .ft-form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.5;
+  }
+
+  /* ── Error por campo ── */
+  #ft-form .ft-form-error {
+    display: none;
+    font-size: 12px;
+    color: #ff6b6b;
+    margin-top: 6px;
+    font-family: 'Dosis', sans-serif;
+    line-height: 1.4;
+  }
+
+  #ft-form .ft-form-field.has-error .ft-form-error { display: block; }
+  #ft-form .ft-form-field.has-error .ft-form-input,
+  #ft-form .ft-form-field.has-error .ft-form-select,
+  #ft-form .ft-form-field.has-error .ft-form-textarea {
+    border-color: rgba(255,107,107,0.6);
+  }
+
+  /* ── Honeypot (REGLA 3) — oculto con CSS, no display:none ── */
+  #ft-form .ft-form-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px; height: 1px;
+    opacity: 0;
+    pointer-events: none;
+    tab-index: -1;
+  }
+
+  /* ── Botón submit ── */
+  #ft-form .ft-form-submit-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8px;
+  }
+
+  #ft-form .ft-form-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #66913E;
+    color: #fff;
+    border: none;
+    padding: 16px 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.15s;
+    min-width: 280px;
+  }
+
+  #ft-form .ft-form-submit:hover:not(:disabled) {
+    background: #557a33;
+    transform: translateY(-1px);
+  }
+
+  #ft-form .ft-form-submit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* ── Spinner ── */
+  #ft-form .ft-form-spinner {
+    display: none;
+    width: 16px; height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: ft-spin 0.6s linear infinite;
+    flex-shrink: 0;
+  }
+
+  #ft-form .ft-form-submit.is-loading .ft-form-spinner { display: block; }
+
+  @keyframes ft-spin { to { transform: rotate(360deg); } }
+
+  /* ── Mensajes de estado ── */
+  #ft-form .ft-form-message {
+    display: none;
+    margin-top: 20px;
+    padding: 16px 20px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Dosis', sans-serif;
+    text-align: center;
+    line-height: 1.5;
+    width: 100%;
+    max-width: 540px;
+  }
+
+  #ft-form .ft-form-message.ft-msg-success {
+    background: rgba(102,145,62,0.12);
+    border: 1px solid rgba(102,145,62,0.4);
+    color: #8bc34a;
+  }
+
+  #ft-form .ft-form-message.ft-msg-error {
+    background: rgba(255,107,107,0.10);
+    border: 1px solid rgba(255,107,107,0.35);
+    color: #ff6b6b;
+  }
+
+  /* ── Responsive móvil ── */
+  @media (max-width: 768px) {
+    #ft-form { padding: 60px 6%; min-height: auto; }
+    #ft-form .ft-form-container { padding: 36px 20px; }
+    #ft-form .ft-form-grid { grid-template-columns: 1fr; gap: 14px; }
+    #ft-form .ft-form-field.full-width { grid-column: 1; }
+    #ft-form .ft-form-submit { width: 100%; min-width: auto; }
+  }
+</style>
+
+<!-- ════════════ HTML ════════════ -->
+<section id="ft-form">
+  <div class="ft-form-container">
+
+    <span class="ft-form-tag">Contacto · Latinoamérica</span>
+    <h2 class="ft-form-title">Evalúe su proyecto</h2>
+    <p class="ft-form-subtitle">
+      Complete el formulario y nuestro equipo le contactará en menos de 24 horas.
+    </p>
+
+    <form id="ft-lead-form" class="ft-form-grid" novalidate>
+
+      <!-- Honeypot (REGLA 3) — los bots lo llenan, los humanos no lo ven -->
+      <input type="text" name="website" class="ft-form-honeypot" tabindex="-1" autocomplete="off">
+
+      <!-- Nombre -->
+      <div class="ft-form-field">
+        <label for="ft-nombre" class="ft-form-label">Nombre completo</label>
+        <input type="text" id="ft-nombre" name="nombre" class="ft-form-input"
+          placeholder="Ej: Juan Pérez Rodríguez" required autocomplete="name">
+        <span class="ft-form-error">Por favor ingrese su nombre completo.</span>
+      </div>
+
+      <!-- Email -->
+      <div class="ft-form-field">
+        <label for="ft-email" class="ft-form-label">Email corporativo</label>
+        <input type="email" id="ft-email" name="email" class="ft-form-input"
+          placeholder="nombre@empresa.com" required autocomplete="email">
+        <span class="ft-form-error">Por favor ingrese un email válido.</span>
+      </div>
+
+      <!-- Teléfono -->
+      <div class="ft-form-field">
+        <label for="ft-telefono" class="ft-form-label">Teléfono</label>
+        <input type="tel" id="ft-telefono" name="telefono" class="ft-form-input"
+          placeholder="+506 8888-8888" required autocomplete="tel">
+        <span class="ft-form-error">Por favor ingrese su teléfono.</span>
+      </div>
+
+      <!-- Empresa -->
+      <div class="ft-form-field">
+        <label for="ft-empresa" class="ft-form-label">Empresa / Organización</label>
+        <input type="text" id="ft-empresa" name="empresa" class="ft-form-input"
+          placeholder="Ej: Hotel Punta Leona S.A." required autocomplete="organization">
+        <span class="ft-form-error">Por favor ingrese el nombre de su empresa.</span>
+      </div>
+
+      <!-- País / Ciudad -->
+      <div class="ft-form-field">
+        <label for="ft-ubicacion" class="ft-form-label">País / Ciudad</label>
+        <input type="text" id="ft-ubicacion" name="ubicacion" class="ft-form-input"
+          placeholder="Ej: San José, Costa Rica" required>
+        <span class="ft-form-error">Por favor ingrese su ubicación.</span>
+      </div>
+
+      <!-- Tipo de proyecto -->
+      <div class="ft-form-field">
+        <label for="ft-tipo-proyecto" class="ft-form-label">Tipo de proyecto</label>
+        <select id="ft-tipo-proyecto" name="tipo_proyecto" class="ft-form-select" required>
+          <option value="" disabled selected>Seleccione una opción...</option>
+          <option value="Hotel Boutique">Hotel Boutique</option>
+          <option value="Corporativo / Oficinas">Corporativo / Oficinas</option>
+          <option value="Zona Franca">Zona Franca</option>
+          <option value="Puerto / Marina">Puerto / Marina</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <span class="ft-form-error">Por favor seleccione un tipo de proyecto.</span>
+      </div>
+
+      <!-- Número de turbinas (opcional) -->
+      <div class="ft-form-field">
+        <label for="ft-turbinas" class="ft-form-label">Número de turbinas (opcional)</label>
+        <input type="number" id="ft-turbinas" name="num_turbinas" class="ft-form-input"
+          placeholder="Ej: 5  —  opcional" min="1">
+      </div>
+
+      <!-- Espaciador para alinear grid -->
+      <div class="ft-form-field" aria-hidden="true"></div>
+
+      <!-- Mensaje (full width, opcional) -->
+      <div class="ft-form-field full-width">
+        <label for="ft-mensaje" class="ft-form-label">Mensaje / Comentarios</label>
+        <textarea id="ft-mensaje" name="mensaje" class="ft-form-textarea"
+          placeholder="Cuéntenos sobre su proyecto... (opcional)" rows="4"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <div class="ft-form-field full-width">
+        <div class="ft-form-submit-wrapper">
+          <button type="submit" id="ft-submit-btn" class="ft-form-submit">
+            <span class="ft-form-spinner" aria-hidden="true"></span>
+            <span class="ft-form-submit-text">Solicitar información</span>
+          </button>
+          <div id="ft-msg-success" class="ft-form-message ft-msg-success">
+            ✓ Solicitud enviada correctamente. Nuestro equipo le contactará en menos de 24 horas.
+          </div>
+          <div id="ft-msg-error" class="ft-form-message ft-msg-error">
+            ✗ Error al enviar. Por favor intente nuevamente o escríbanos a info@ecoconsultor.com
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- ════════════ JAVASCRIPT ════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ══════════════════════════════════════════════
+     WEBHOOK URL — GOOGLE APPS SCRIPT (REGLA 7)
+  ══════════════════════════════════════════════
+
+  CÓMO OBTENER ESTA URL:
+
+  1. Ir a Google Drive → Crear nueva Hoja de Cálculo
+     Nombre sugerido: "FlowerTurbines_Leads"
+
+  2. Crear en fila 1 estas columnas (en este orden):
+     timestamp | nombre | email | telefono | empresa |
+     pais_ciudad | tipo_proyecto | num_turbinas | mensaje |
+     fuente | dispositivo | url_pagina | utm_source | utm_campaign
+
+  3. En la hoja: Extensiones → Apps Script → pegar este código:
+
+     function doPost(e) {
+       try {
+         var sheet = SpreadsheetApp.getActiveSheet();
+         var data  = JSON.parse(e.postData.contents);
+         sheet.appendRow([
+           data.timestamp, data.nombre, data.email,
+           data.telefono, data.empresa, data.pais_ciudad,
+           data.tipo_proyecto, data.num_turbinas || '',
+           data.mensaje || '', data.fuente,
+           data.dispositivo, data.url_pagina,
+           data.utm_source || '', data.utm_campaign || ''
+         ]);
+         return ContentService
+           .createTextOutput(JSON.stringify({status:'ok'}))
+           .setMimeType(ContentService.MimeType.JSON);
+       } catch(err) {
+         return ContentService
+           .createTextOutput(JSON.stringify({status:'error', msg: err.toString()}))
+           .setMimeType(ContentService.MimeType.JSON);
+       }
+     }
+
+  4. Implementar → Nueva implementación → Aplicación web
+     - Ejecutar como: Yo (mi cuenta Google)
+     - Quién tiene acceso: Cualquier persona (anónimo)
+
+  5. Copiar la URL generada (termina en /exec) y pegarla abajo.
+
+  ══════════════════════════════════════════════ */
+  var WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxGeTXeTLq3uwlSX79g5jvoozdwxPlkbzLbj7lPKbT2CQ5WskPM41XpO4YiSWZmZEDmag/exec';
+
+  var form       = document.getElementById('ft-lead-form');
+  var submitBtn  = document.getElementById('ft-submit-btn');
+  var submitText = submitBtn.querySelector('.ft-form-submit-text');
+  var msgSuccess = document.getElementById('ft-msg-success');
+  var msgError   = document.getElementById('ft-msg-error');
+
+  if (!form) return;
+
+  /* ── Detectar dispositivo ── */
+  function getDevice() {
+    var ua = navigator.userAgent;
+    if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) return 'Tablet';
+    if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle/.test(ua)) return 'Móvil';
+    return 'Desktop';
+  }
+
+  /* ── Leer UTM params de la URL ── */
+  function getUTM(key) {
+    try {
+      return new URLSearchParams(window.location.search).get(key) || '';
+    } catch(e) { return ''; }
+  }
+
+  /* ── Validar un campo individual ── */
+  function validateField(field) {
+    var input = field.querySelector('.ft-form-input, .ft-form-select, .ft-form-textarea');
+    if (!input) return true;
+
+    var val = input.value.trim();
+    var ok  = true;
+
+    if (input.hasAttribute('required') && !val) ok = false;
+    if (input.type === 'email' && val && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) ok = false;
+    if (input.tagName === 'SELECT' && input.hasAttribute('required') && !val) ok = false;
+
+    field.classList.toggle('has-error', !ok);
+    return ok;
+  }
+
+  /* ── Validar todo el form, devuelve primer campo con error ── */
+  function validateAll() {
+    var fields    = form.querySelectorAll('.ft-form-field');
+    var firstBad  = null;
+    var allOk     = true;
+    fields.forEach(function(f) {
+      if (!validateField(f)) {
+        allOk = false;
+        if (!firstBad) firstBad = f.querySelector('.ft-form-input, .ft-form-select, .ft-form-textarea');
+      }
+    });
+    return { ok: allOk, first: firstBad };
+  }
+
+  /* ── Limpiar error al escribir ── */
+  form.addEventListener('input', function(e) {
+    var field = e.target.closest('.ft-form-field');
+    if (field) field.classList.remove('has-error');
+  });
+
+  /* ── Colorear select cuando tiene valor ── */
+  var select = form.querySelector('.ft-form-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      this.classList.toggle('has-value', !!this.value);
+    });
+  }
+
+  /* ── Submit ── */
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    /* REGLA 3 — Honeypot: si el campo trampa tiene valor, es un bot */
+    var hp = form.querySelector('[name="website"]');
+    if (hp && hp.value !== '') return;
+
+    /* Validar */
+    var result = validateAll();
+    if (!result.ok) {
+      if (result.first) {
+        result.first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        result.first.focus();
+      }
+      return;
+    }
+
+    /* Ocultar mensajes previos */
+    msgSuccess.style.display = 'none';
+    msgError.style.display   = 'none';
+
+    /* Estado de carga */
+    submitBtn.disabled = true;
+    submitBtn.classList.add('is-loading');
+    submitText.textContent = 'Enviando...';
+    form.querySelectorAll('.ft-form-input, .ft-form-select, .ft-form-textarea')
+        .forEach(function(el) { el.disabled = true; });
+
+    /* REGLA 4 — Timestamp Costa Rica */
+    var timestamp = new Date().toLocaleString('es-CR', {
+      timeZone: 'America/Costa_Rica',
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit'
+    });
+
+    /* REGLA 5 — Payload enriquecido */
+    var payload = {
+      timestamp:      timestamp,
+      nombre:         form.querySelector('[name="nombre"]').value.trim(),
+      email:          form.querySelector('[name="email"]').value.trim(),
+      telefono:       form.querySelector('[name="telefono"]').value.trim(),
+      empresa:        form.querySelector('[name="empresa"]').value.trim(),
+      pais_ciudad:    form.querySelector('[name="ubicacion"]').value.trim(),
+      tipo_proyecto:  form.querySelector('[name="tipo_proyecto"]').value,
+      num_turbinas:   form.querySelector('[name="num_turbinas"]').value || '—',
+      mensaje:        form.querySelector('[name="mensaje"]').value.trim() || '—',
+      fuente:         'Flower Turbines Landing Page',
+      dispositivo:    getDevice(),
+      url_pagina:     window.location.href,
+      utm_source:     getUTM('utm_source'),
+      utm_campaign:   getUTM('utm_campaign')
+    };
+
+    /* REGLA 2 — Fetch no-cors a Google Apps Script */
+    fetch(WEBHOOK_URL, {
+      method:  'POST',
+      mode:    'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload)
+    })
+    .then(function() {
+      /* Con no-cors la respuesta es opaca — si llegamos aquí el request fue enviado */
+      submitBtn.classList.remove('is-loading');
+      submitText.textContent = '✓ Enviado';
+      msgSuccess.style.display = 'block';
+      msgSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      form.reset();
+      if (select) select.classList.remove('has-value');
+    })
+    .catch(function() {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('is-loading');
+      submitText.textContent = 'Solicitar información';
+      form.querySelectorAll('.ft-form-input, .ft-form-select, .ft-form-textarea')
+          .forEach(function(el) { el.disabled = false; });
+      msgError.style.display = 'block';
+    });
+  });
+
+  /* ── JS Anti-Elementor ── */
+  var sec = document.getElementById('ft-form');
+  if (sec) {
+    var target = sec.parentElement;
+    var levels = 0;
+    while (target && levels < 8) {
+      if (target === document.body || target === document.documentElement) break;
+      target.style.setProperty('padding',    '0',    'important');
+      target.style.setProperty('margin',     '0',    'important');
+      target.style.setProperty('max-width',  '100%', 'important');
+      target.style.setProperty('overflow',   'hidden','important');
+      target.style.setProperty('width',      '100%', 'important');
+      target.style.setProperty('box-sizing', 'border-box', 'important');
+      target = target.parentElement;
+      levels++;
+    }
+  }
+
+})();
+</script>
