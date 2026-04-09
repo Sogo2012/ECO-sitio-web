@@ -294,7 +294,7 @@
 
   /* ── Mensajes de estado ── */
   #ft-form .ft-form-message {
-    display: none;
+    display: none !important;
     margin-top: 20px;
     padding: 16px 20px;
     border-radius: 3px;
@@ -304,6 +304,10 @@
     line-height: 1.5;
     width: 100%;
     max-width: 540px;
+  }
+
+  #ft-form .ft-form-message.is-visible {
+    display: block !important;
   }
 
   #ft-form .ft-form-message.ft-msg-success {
@@ -318,6 +322,14 @@
     color: #ff6b6b;
   }
 
+  /* ── Responsive tablet ── */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    #ft-form { padding: 70px 5%; }
+    #ft-form .ft-form-container { padding: 48px 36px; }
+    #ft-form .ft-form-title { font-size: clamp(28px, 3.5vw, 40px); }
+    #ft-form .ft-form-subtitle { font-size: 15px; }
+  }
+
   /* ── Responsive móvil ── */
   @media (max-width: 768px) {
     #ft-form { padding: 60px 6%; min-height: auto; }
@@ -325,6 +337,7 @@
     #ft-form .ft-form-grid { grid-template-columns: 1fr; gap: 14px; }
     #ft-form .ft-form-field.full-width { grid-column: 1; }
     #ft-form .ft-form-submit { width: 100%; min-width: auto; }
+    #ft-form .ft-form-title { font-size: clamp(26px, 7vw, 36px); }
   }
 </style>
 
@@ -572,8 +585,8 @@
     }
 
     /* Ocultar mensajes previos */
-    msgSuccess.style.display = 'none';
-    msgError.style.display   = 'none';
+    msgSuccess.classList.remove('is-visible');
+    msgError.classList.remove('is-visible');
 
     /* Estado de carga */
     submitBtn.disabled = true;
@@ -618,7 +631,7 @@
       /* Con no-cors la respuesta es opaca — si llegamos aquí el request fue enviado */
       submitBtn.classList.remove('is-loading');
       submitText.textContent = '✓ Enviado';
-      msgSuccess.style.display = 'block';
+      msgSuccess.classList.add('is-visible');
       msgSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
       form.reset();
       if (select) select.classList.remove('has-value');
@@ -629,7 +642,7 @@
       submitText.textContent = 'Solicitar información';
       form.querySelectorAll('.ft-form-input, .ft-form-select, .ft-form-textarea')
           .forEach(function(el) { el.disabled = false; });
-      msgError.style.display = 'block';
+      msgError.classList.add('is-visible');
     });
   });
 
