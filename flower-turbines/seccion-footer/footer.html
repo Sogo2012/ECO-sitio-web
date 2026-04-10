@@ -1,0 +1,394 @@
+<!-- ================================================
+     FOOTER - FLOWER TURBINES LANDING PAGE
+     ECO Consultor · ecoconsultor.com
+     ─────────────────────────────
+     REGLAS APLICADAS:
+     ✅ Reset CSS con prefijo #ft-footer
+     ✅ Todos los selectores prefijados con #ft-footer
+     ✅ JS Anti-Elementor al final
+     ✅ Botón de retorno al Home: ecoconsultor.com
+================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ── Reset universal ── */
+  #ft-footer, #ft-footer * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+  }
+
+  /* ── Contenedor principal ── */
+  #ft-footer {
+    position: relative;
+    width: 100%;
+    background: #060F12;
+    font-family: 'Montserrat', sans-serif;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ══ BLOQUE SUPERIOR ══ */
+  #ft-footer .ft-footer-top {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: start;
+    gap: 48px;
+    padding: 60px 7% 52px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ── Columna izquierda: Logo + tagline ── */
+  #ft-footer .ft-footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #ft-footer .ft-footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  #ft-footer .ft-footer-logo img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.92;
+  }
+
+  #ft-footer .ft-footer-logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  #ft-footer .ft-footer-logo-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+    line-height: 1.2 !important;
+  }
+
+  #ft-footer .ft-footer-logo-sub {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+    line-height: 1.3 !important;
+  }
+
+  #ft-footer .ft-footer-tagline {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    font-family: 'Dosis', sans-serif;
+    line-height: 1.7 !important;
+    max-width: 300px;
+  }
+
+  #ft-footer .ft-footer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(102,145,62,0.08);
+    border: 1px solid rgba(102,145,62,0.25);
+    border-radius: 3px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #7ab04e;
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: fit-content;
+    line-height: 1.2 !important;
+  }
+
+  #ft-footer .ft-footer-badge-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #66913E;
+    flex-shrink: 0;
+  }
+
+  /* ── Columna central: Divisor ── */
+  #ft-footer .ft-footer-divider-v {
+    width: 1px;
+    height: 100%;
+    min-height: 160px;
+    background: rgba(255,255,255,0.07);
+    align-self: stretch;
+  }
+
+  /* ── Columna derecha: Contacto ── */
+  #ft-footer .ft-footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  #ft-footer .ft-footer-contact-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.62);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+    line-height: 1 !important;
+  }
+
+  #ft-footer .ft-footer-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  #ft-footer .ft-footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  #ft-footer .ft-footer-contact-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(102,145,62,0.10);
+    border: 1px solid rgba(102,145,62,0.20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    line-height: 1 !important;
+  }
+
+  #ft-footer .ft-footer-contact-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 0.3px;
+    line-height: 1.3 !important;
+    transition: color 0.2s;
+  }
+
+  #ft-footer a.ft-footer-contact-item:hover .ft-footer-contact-text {
+    color: #7ab04e;
+  }
+
+  /* ── Botón de retorno al Home ── */
+  #ft-footer .ft-footer-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 3px;
+    padding: 13px 24px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.80);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    width: fit-content;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+    line-height: 1.2 !important;
+  }
+
+  #ft-footer .ft-footer-home-btn:hover {
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.30);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  #ft-footer .ft-footer-home-btn-arrow {
+    font-size: 14px;
+    transition: transform 0.2s;
+  }
+
+  #ft-footer .ft-footer-home-btn:hover .ft-footer-home-btn-arrow {
+    transform: translateX(-3px);
+  }
+
+  /* ══ BLOQUE INFERIOR: Copyright ══ */
+  #ft-footer .ft-footer-bottom {
+    padding: 22px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  #ft-footer .ft-footer-copy {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.38);
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 0.3px;
+    line-height: 1.4 !important;
+  }
+
+  #ft-footer .ft-footer-copy a {
+    color: rgba(255,255,255,0.50);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  #ft-footer .ft-footer-copy a:hover {
+    color: #7ab04e;
+  }
+
+  #ft-footer .ft-footer-legal {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  #ft-footer .ft-footer-legal a {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.32);
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: color 0.2s;
+    line-height: 1 !important;
+  }
+
+  #ft-footer .ft-footer-legal a:hover {
+    color: rgba(255,255,255,0.62);
+  }
+
+  /* ══ TABLET (769px - 1024px) ══ */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    #ft-footer .ft-footer-top {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 48px 6% 40px;
+    }
+    #ft-footer .ft-footer-divider-v { display: none; }
+    #ft-footer .ft-footer-bottom { padding: 20px 6%; }
+  }
+
+  /* ══ MÓVIL ≤768px ══ */
+  @media (max-width: 768px) {
+    #ft-footer .ft-footer-top {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 40px 6% 36px;
+    }
+    #ft-footer .ft-footer-divider-v { display: none; }
+    #ft-footer .ft-footer-tagline { max-width: 100%; }
+    #ft-footer .ft-footer-bottom {
+      padding: 18px 6%;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    #ft-footer .ft-footer-home-btn { width: 100%; justify-content: center; }
+  }
+</style>
+
+<!-- ════════════════ HTML ════════════════ -->
+<footer id="ft-footer">
+
+  <div class="ft-footer-top">
+
+    <!-- Columna izquierda: Marca -->
+    <div class="ft-footer-brand">
+      <div class="ft-footer-logo">
+        <img src="https://ecoconsultor.com/wp-content/uploads/2026/04/flower-turbines-logo.png"
+             alt="ECO Consultor">
+        <div class="ft-footer-logo-text">
+          <span class="ft-footer-logo-name">ECO Consultor</span>
+          <span class="ft-footer-logo-sub">Energy Conservation Opportunities</span>
+        </div>
+      </div>
+      <p class="ft-footer-tagline">
+        Distribuidor oficial de Flower Turbines para Latinoamérica. Soluciones de energía eólica urbana para hoteles, corporativos y zonas francas.
+      </p>
+      <div class="ft-footer-badge">
+        <div class="ft-footer-badge-dot"></div>
+        Distribuidor Oficial · Latinoamérica
+      </div>
+    </div>
+
+    <!-- Divisor vertical -->
+    <div class="ft-footer-divider-v"></div>
+
+    <!-- Columna derecha: Contacto + Home -->
+    <div class="ft-footer-contact">
+      <span class="ft-footer-contact-title">Contáctanos</span>
+      <div class="ft-footer-contact-list">
+        <div class="ft-footer-contact-item">
+          <div class="ft-footer-contact-icon">📍</div>
+          <span class="ft-footer-contact-text">Coyol, Alajuela, Costa Rica</span>
+        </div>
+        <a href="mailto:info@ecoconsultor.com" class="ft-footer-contact-item">
+          <div class="ft-footer-contact-icon">✉</div>
+          <span class="ft-footer-contact-text">info@ecoconsultor.com</span>
+        </a>
+        <a href="tel:+50670549832" class="ft-footer-contact-item">
+          <div class="ft-footer-contact-icon">📞</div>
+          <span class="ft-footer-contact-text">+506 7054 9832</span>
+        </a>
+      </div>
+
+      <!-- Botón de retorno al Home -->
+      <a href="https://ecoconsultor.com/" class="ft-footer-home-btn">
+        <span class="ft-footer-home-btn-arrow">←</span>
+        Volver al sitio principal
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Bloque inferior -->
+  <div class="ft-footer-bottom">
+    <span class="ft-footer-copy">
+      Copyright © 2025 · <a href="https://ecoconsultor.com/">ECO Consultor</a>. Todos los derechos reservados.
+    </span>
+    <div class="ft-footer-legal">
+      <a href="https://ecoconsultor.com/privacidad/">Política de privacidad</a>
+      <a href="https://ecoconsultor.com/contacto/">Contacto</a>
+    </div>
+  </div>
+
+</footer>
+
+<!-- JS Anti-Elementor -->
+<script>
+(function () {
+  'use strict';
+  var el = document.getElementById('ft-footer');
+  if (!el) return;
+  var target = el.parentElement;
+  var levels = 0;
+  while (target && levels < 8) {
+    if (target === document.body || target === document.documentElement) break;
+    target.style.setProperty('padding',    '0',    'important');
+    target.style.setProperty('margin',     '0',    'important');
+    target.style.setProperty('max-width',  '100%', 'important');
+    target.style.setProperty('overflow',   'hidden','important');
+    target.style.setProperty('width',      '100%', 'important');
+    target.style.setProperty('box-sizing', 'border-box', 'important');
+    target = target.parentElement;
+    levels++;
+  }
+})();
+</script>
