@@ -1,15 +1,16 @@
 <!-- ================================================
-     HERO SECTION - FLOWER TURBINES v5
+     HERO SECTION - FLOWER TURBINES v6
      ECO Consultor · ecoconsultor.com
      Sección 01 — Hero principal
      ─────────────────────────────
      FIXES aplicados:
      ✅ line-height: normal en reset universal (bloquea Elementor)
-     ✅ line-height: 1.4 !important en logo-name
-     ✅ margin-top: 6px !important en logo-sub
-     ✅ padding-top: 0 en hero-content (evita empujar contenido al fondo)
-     ✅ margin-bottom: 36px en ft-tag
-     ✅ margin-bottom: 28px y line-height: 1.1 en ft-title
+     ✅ FIX CRÍTICO: selectores de clase prefijados con #ft-hero
+        para superar la especificidad del reset (#id > .class),
+        igual que en modelos.html/contacto.html/footer.html —
+        antes los márgenes/line-height de .ft-title, .ft-subtitle,
+        .ft-tag, etc. quedaban en 0 porque el reset (#ft-hero *)
+        les ganaba en especificidad.
      ✅ JS Nuclear: anula padding/margin de Elementor
 ================================================ -->
 
@@ -99,11 +100,11 @@
     object-fit: contain;
     filter: drop-shadow(0 0 8px rgba(102,145,62,0.3));
   }
-  .ft-logo-divider { width:1px; height:26px; background:rgba(255,255,255,0.15); flex-shrink:0; }
-  .ft-logo-text    { display:flex; flex-direction:column; }
-  .ft-logo-name    { font-size:13px; font-weight:700; color:#fff; letter-spacing:1px; line-height:1.4 !important; }
-  .ft-logo-sub     { font-size:12px; font-weight:400; color:rgba(255,255,255,0.65); letter-spacing:2px; text-transform:uppercase; font-family:'Dosis',sans-serif; margin-top:6px !important; }
-  .ft-official-badge {
+  #ft-hero .ft-logo-divider { width:1px; height:26px; background:rgba(255,255,255,0.15); flex-shrink:0; }
+  #ft-hero .ft-logo-text    { display:flex; flex-direction:column; }
+  #ft-hero .ft-logo-name    { font-size:13px; font-weight:700; color:#fff; letter-spacing:1px; line-height:1.4; }
+  #ft-hero .ft-logo-sub     { font-size:12px; font-weight:400; color:rgba(255,255,255,0.65); letter-spacing:2px; text-transform:uppercase; font-family:'Dosis',sans-serif; margin-top:6px; }
+  #ft-hero .ft-official-badge {
     font-size:13px; font-weight:700; color:#7ab04e;
     letter-spacing:2px; text-transform:uppercase;
     font-family:'Dosis',sans-serif;
@@ -121,7 +122,7 @@
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 20px; padding: 7px 16px;
   }
-  .ft-badge-dot {
+  #ft-hero .ft-badge-dot {
     width:7px; height:7px; border-radius:50%;
     background:#66913E;
     animation: ft-pulse 2.2s ease-in-out infinite;
@@ -130,7 +131,7 @@
     0%,100% { opacity:1; transform:scale(1);   }
     50%     { opacity:0.5; transform:scale(1.4); }
   }
-  .ft-badge-text {
+  #ft-hero .ft-badge-text {
     font-size:12px; color:rgba(255,255,255,0.72);
     font-family:'Dosis',sans-serif; letter-spacing:1px; font-weight:600;
   }
@@ -146,7 +147,7 @@
     padding-bottom: 2rem;
   }
 
-  .ft-tag {
+  #ft-hero .ft-tag {
     display: inline-block;
     background: #66913E; color: #fff;
     font-size: 12px; font-weight: 700;
@@ -156,26 +157,26 @@
     font-family: 'Dosis', sans-serif;
   }
 
-  .ft-title {
+  #ft-hero .ft-title {
     font-size: clamp(36px, 5.5vw, 72px);
     font-weight: 800; color: #fff;
-    line-height: 1.1;
+    line-height: 1.15;
     letter-spacing: -1.5px;
     margin-bottom: 28px;
   }
-  .ft-title span { color: #66913E; }
+  #ft-hero .ft-title span { color: #66913E; }
 
-  .ft-subtitle {
+  #ft-hero .ft-subtitle {
     font-size: clamp(16px, 1.3vw, 18px);
     font-weight: 300; color: rgba(255,255,255,0.80);
-    line-height: 1.75; margin-bottom: 40px;
+    line-height: 1.8; margin-bottom: 40px;
     font-family: 'Dosis', sans-serif;
     max-width: 460px; letter-spacing: 0.3px;
   }
 
-  .ft-ctas { display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  #ft-hero .ft-ctas { display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
 
-  .ft-btn-primary {
+  #ft-hero .ft-btn-primary {
     display: inline-block; background: #66913E; color: #fff;
     text-decoration: none; padding: 15px 34px;
     font-family: 'Montserrat', sans-serif;
@@ -184,9 +185,9 @@
     border-radius: 3px; border: none; cursor: pointer;
     transition: background 0.25s, transform 0.15s;
   }
-  .ft-btn-primary:hover { background:#557a33; transform:translateY(-1px); color:#fff; text-decoration:none; }
+  #ft-hero .ft-btn-primary:hover { background:#557a33; transform:translateY(-1px); color:#fff; text-decoration:none; }
 
-  .ft-btn-secondary {
+  #ft-hero .ft-btn-secondary {
     display: inline-block; background: transparent;
     color: rgba(255,255,255,0.85); text-decoration: none;
     padding: 15px 34px;
@@ -196,7 +197,7 @@
     border-radius: 3px; border:1px solid rgba(255,255,255,0.35);
     cursor: pointer; transition: border-color 0.25s, background 0.25s;
   }
-  .ft-btn-secondary:hover { border-color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.06); color:#fff; text-decoration:none; }
+  #ft-hero .ft-btn-secondary:hover { border-color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.06); color:#fff; text-decoration:none; }
 
   /* ── Estadísticas ── */
   #ft-hero-stats {
@@ -213,21 +214,21 @@
     -webkit-backdrop-filter: blur(10px);
   }
 
-  .ft-stat {
+  #ft-hero .ft-stat {
     flex: 1; display: flex; flex-direction: column;
     padding-right: 24px;
     border-right: 1px solid rgba(255,255,255,0.08);
     margin-right: 24px;
     min-width: 100px;
   }
-  .ft-stat:last-child { border-right:none; margin-right:0; padding-right:0; }
+  #ft-hero .ft-stat:last-child { border-right:none; margin-right:0; padding-right:0; }
 
-  .ft-stat-num {
+  #ft-hero .ft-stat-num {
     font-size: clamp(18px, 2vw, 26px);
     font-weight: 800; color: #66913E;
-    letter-spacing: -0.5px; line-height: 1.1; margin-bottom: 8px;
+    letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 8px;
   }
-  .ft-stat-label {
+  #ft-hero .ft-stat-label {
     font-size: 12px; font-weight: 400;
     color: rgba(255,255,255,0.62);
     letter-spacing: 1.5px; text-transform: uppercase;
@@ -240,12 +241,12 @@
     z-index: 4; display:flex; flex-direction:column;
     align-items:center; gap:8px;
   }
-  .ft-scroll-text {
+  #ft-hero .ft-scroll-text {
     font-size:11px; color:rgba(255,255,255,0.45);
     letter-spacing:3px; text-transform:uppercase;
     font-family:'Dosis',sans-serif; writing-mode:vertical-rl;
   }
-  .ft-scroll-line {
+  #ft-hero .ft-scroll-line {
     width:1px; height:40px;
     background:linear-gradient(to bottom, rgba(102,145,62,0.7), transparent);
     animation:ft-scrolldown 2s ease-in-out infinite;
@@ -276,9 +277,9 @@
     }
     #ft-logo-badge { left:6%; top:22px; gap:10px; }
     #ft-logo-badge img { width:34px; height:34px; }
-    .ft-logo-name  { font-size:13px; }
-    .ft-logo-sub   { font-size:13px; }
-    .ft-official-badge { font-size:12px; padding:3px 8px; }
+    #ft-hero .ft-logo-name  { font-size:13px; }
+    #ft-hero .ft-logo-sub   { font-size:13px; }
+    #ft-hero .ft-official-badge { font-size:12px; padding:3px 8px; }
     #ft-video-badge { display:none; }
     #ft-scroll-hint { display:none; }
     #ft-hero-content {
@@ -292,7 +293,7 @@
       flex-wrap: nowrap;
       margin-top: 2rem;
     }
-    .ft-stat { min-width:80px; }
+    #ft-hero .ft-stat { min-width:80px; }
   }
 </style>
 
