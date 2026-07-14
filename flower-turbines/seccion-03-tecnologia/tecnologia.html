@@ -5,8 +5,11 @@
      ─────────────────────────────
      FIXES aplicados:
      ✅ line-height: normal en reset (bloquea Elementor)
-     ✅ line-height !important en claim, features y stats
-     ✅ margin-bottom !important en elementos clave
+     ✅ FIX CRÍTICO: selectores de clase prefijados con #ft-sec3a
+        para superar la especificidad del reset (#id > .class) —
+        antes .ft3a-feature (padding), .ft3a-cert-label (margin) y
+        .ft3a-stat-detail (margin-top:auto) quedaban en 0 porque
+        el reset (#ft-sec3a *) les ganaba en especificidad.
      ✅ ft4-scaled.png flotando (fondo transparente)
      ✅ JS Nuclear: anula padding/margin de Elementor
 ================================================ -->
@@ -47,33 +50,33 @@
     max-width: 900px;
   }
 
-  .ft3a-section-num {
+  #ft-sec3a .ft3a-section-num {
     font-size: 13px; font-weight: 700; color: #7ab04e;
     letter-spacing: 4px; text-transform: uppercase;
     font-family: 'Dosis', sans-serif;
-    margin-bottom: 32px !important;
+    margin-bottom: 32px;
     display: flex; align-items: center; gap: 12px;
-    line-height: 1 !important;
+    line-height: 1;
   }
-  .ft3a-section-num::after {
+  #ft-sec3a .ft3a-section-num::after {
     content: ''; display: block;
     width: 40px; height: 1px;
     background: #66913E; opacity: 0.5;
   }
 
-  .ft3a-claim {
+  #ft-sec3a .ft3a-claim {
     font-size: clamp(32px, 4.5vw, 64px);
     font-weight: 800; color: #fff;
-    line-height: 1.15 !important;
+    line-height: 1.2;
     letter-spacing: -1.5px;
-    margin-bottom: 28px !important;
+    margin-bottom: 28px;
   }
-  .ft3a-claim span { color: #66913E; }
+  #ft-sec3a .ft3a-claim span { color: #66913E; }
 
-  .ft3a-intro-desc {
+  #ft-sec3a .ft3a-intro-desc {
     font-size: clamp(15px, 1.3vw, 18px);
     font-weight: 300; color: rgba(255,255,255,0.78);
-    line-height: 1.85 !important;
+    line-height: 1.85;
     max-width: 620px;
     font-family: 'Dosis', sans-serif;
   }
@@ -123,36 +126,36 @@
   /* Columna contenido — features */
   #ft-3a-content-col { display: flex; flex-direction: column; gap: 0; }
 
-  .ft3a-feature {
+  #ft-sec3a .ft3a-feature {
     padding: 32px 0;
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
-  .ft3a-feature:first-child { padding-top: 0; }
-  .ft3a-feature:last-child  { border-bottom: none; padding-bottom: 0; }
+  #ft-sec3a .ft3a-feature:first-child { padding-top: 0; }
+  #ft-sec3a .ft3a-feature:last-child  { border-bottom: none; padding-bottom: 0; }
 
-  .ft3a-feature-num {
+  #ft-sec3a .ft3a-feature-num {
     font-size: 12px; font-weight: 700; color: #7ab04e;
     letter-spacing: 3px; text-transform: uppercase;
     font-family: 'Dosis', sans-serif;
-    margin-bottom: 10px !important;
-    line-height: 1 !important;
+    margin-bottom: 10px;
+    line-height: 1;
   }
 
-  .ft3a-feature-title {
+  #ft-sec3a .ft3a-feature-title {
     font-size: clamp(16px, 1.6vw, 22px);
     font-weight: 700; color: #fff;
-    line-height: 1.25 !important;
-    margin-bottom: 12px !important;
+    line-height: 1.3;
+    margin-bottom: 12px;
     letter-spacing: -0.3px;
   }
 
-  .ft3a-feature-desc {
+  #ft-sec3a .ft3a-feature-desc {
     font-size: clamp(16px, 1.1vw, 17px);
     font-weight: 300; color: rgba(255,255,255,0.78);
-    line-height: 1.8 !important;
+    line-height: 1.8;
     font-family: 'Dosis', sans-serif;
   }
-  .ft3a-feature-desc strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+  #ft-sec3a .ft3a-feature-desc strong { color: rgba(255,255,255,0.85); font-weight: 600; }
 
   /* ── Stats row ── */
   #ft-3a-stats {
@@ -166,37 +169,37 @@
     padding-right: 7%;
   }
 
-  .ft3a-stat {
+  #ft-sec3a .ft3a-stat {
     padding: 40px 18px;
     border-right: 1px solid rgba(255,255,255,0.06);
     display: flex; flex-direction: column;
   }
-  .ft3a-stat:first-child { padding-left: 0; }
-  .ft3a-stat:last-child  { border-right: none; padding-right: 0; }
+  #ft-sec3a .ft3a-stat:first-child { padding-left: 0; }
+  #ft-sec3a .ft3a-stat:last-child  { border-right: none; padding-right: 0; }
 
-  .ft3a-stat-num {
+  #ft-sec3a .ft3a-stat-num {
     font-size: clamp(28px, 3vw, 44px);
     font-weight: 800; color: #fff;
     letter-spacing: -1.5px;
-    line-height: 1 !important;
-    margin-bottom: 10px !important;
+    line-height: 1;
+    margin-bottom: 10px;
   }
-  .ft3a-stat-num span { color: #66913E; }
+  #ft-sec3a .ft3a-stat-num span { color: #66913E; }
 
-  .ft3a-stat-label {
+  #ft-sec3a .ft3a-stat-label {
     font-size: 13px; font-weight: 400;
     color: rgba(255,255,255,0.62);
     letter-spacing: 1.5px; text-transform: uppercase;
     font-family: 'Dosis', sans-serif;
-    margin-bottom: 10px !important;
-    line-height: 1.3 !important;
+    margin-bottom: 10px;
+    line-height: 1.3;
   }
 
-  .ft3a-stat-detail {
+  #ft-sec3a .ft3a-stat-detail {
     font-size: 14px; font-weight: 300;
     color: rgba(255,255,255,0.75);
     font-family: 'Dosis', sans-serif;
-    line-height: 1.6 !important;
+    line-height: 1.6;
     margin-top: auto;
   }
 
@@ -212,15 +215,15 @@
     flex-wrap: wrap;
   }
 
-  .ft3a-cert-label {
+  #ft-sec3a .ft3a-cert-label {
     font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.62);
     letter-spacing: 2px; text-transform: uppercase;
     font-family: 'Dosis', sans-serif;
     margin-right: 8px;
-    line-height: 1 !important;
+    line-height: 1;
   }
 
-  .ft3a-cert-badge {
+  #ft-sec3a .ft3a-cert-badge {
     display: inline-flex; align-items: center; gap: 7px;
     background: rgba(102,145,62,0.08);
     border: 1px solid rgba(102,145,62,0.22);
@@ -228,17 +231,17 @@
     font-size: 14px; font-weight: 600;
     color: rgba(255,255,255,0.82);
     font-family: 'Dosis', sans-serif; letter-spacing: 0.5px;
-    line-height: 1.2 !important;
+    line-height: 1.2;
   }
-  .ft3a-cert-dot { width:5px; height:5px; border-radius:50%; background:#66913E; flex-shrink:0; }
+  #ft-sec3a .ft3a-cert-dot { width:5px; height:5px; border-radius:50%; background:#66913E; flex-shrink:0; }
 
   /* ── Tablet ── */
   @media (min-width: 769px) and (max-width: 1024px) {
     #ft-3a-main { grid-template-columns: 1fr 1fr; gap: 4%; padding-bottom: 4rem; }
     #ft-3a-product-img { width: 85%; }
     #ft-3a-stats { grid-template-columns: repeat(2, 1fr); }
-    .ft3a-stat:nth-child(2) { border-right: none; padding-right: 0; }
-    .ft3a-stat:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.06); padding-left: 0; }
+    #ft-sec3a .ft3a-stat:nth-child(2) { border-right: none; padding-right: 0; }
+    #ft-sec3a .ft3a-stat:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.06); padding-left: 0; }
   }
 
   /* ── Móvil ── */
@@ -253,11 +256,11 @@
     #ft-3a-image-col { order: -1; }
     #ft-3a-product-img { width: 55%; }
     #ft-3a-stats { grid-template-columns: repeat(2, 1fr); padding-left: 6%; padding-right: 6%; }
-    .ft3a-stat { padding: 28px 14px; }
-    .ft3a-stat:first-child { padding-left: 0; }
-    .ft3a-stat:nth-child(2) { border-right: none; padding-right: 0; }
-    .ft3a-stat:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.06); padding-left: 0; }
-    .ft3a-stat:nth-child(4) { padding-right: 0; }
+    #ft-sec3a .ft3a-stat { padding: 28px 14px; }
+    #ft-sec3a .ft3a-stat:first-child { padding-left: 0; }
+    #ft-sec3a .ft3a-stat:nth-child(2) { border-right: none; padding-right: 0; }
+    #ft-sec3a .ft3a-stat:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.06); padding-left: 0; }
+    #ft-sec3a .ft3a-stat:nth-child(4) { padding-right: 0; }
     #ft-3a-certs { padding: 28px 6%; gap: 12px; }
   }
 </style>
