@@ -42,16 +42,17 @@
     font-family: 'Montserrat', sans-serif;
   }
 
-  /* ── Fondo con imagen (REGLA 6) ── */
-  #ft-form::before {
+  /* ── Fondo con imagen (REGLA 6) — confinado a la columna del formulario
+     para que no se superponga sobre el video de la izquierda ── */
+  #ft-form .ft-form-col::before {
     content: '';
     position: absolute;
     inset: 0;
     background-image: url('https://ecoconsultor.com/wp-content/uploads/2026/04/ft5-scaled.png');
     background-size: cover;
-    background-position: center;
+    background-position: center right;
     opacity: 0.06;
-    z-index: 1;
+    z-index: -1;
     pointer-events: none;
   }
 
@@ -476,7 +477,7 @@
   <div class="ft-form-col">
     <div class="ft-form-container">
 
-      <span class="ft-form-tag">Contacto · Latinoamérica</span>
+      <span class="ft-form-tag">Contacto · Costa Rica</span>
       <h2 class="ft-form-title">Evalúe su proyecto</h2>
       <p class="ft-form-subtitle">
         Complete el formulario y nuestro equipo le contactará en menos de 24 horas.
