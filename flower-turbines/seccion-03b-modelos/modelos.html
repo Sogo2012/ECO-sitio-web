@@ -43,12 +43,16 @@
   }
 
   #ft-sec3b .ft3b-section-num {
-    font-size: 13px; font-weight: 700; color: #7ab04e;
-    letter-spacing: 4px; text-transform: uppercase;
+    font-size: 14px; font-weight: 700; color: #7ab04e;
+    letter-spacing: 3px; text-transform: uppercase;
     font-family: 'Dosis', sans-serif;
     margin-bottom: 16px;
     display: flex; align-items: center; gap: 12px;
     line-height: 1.2;
+  }
+  #ft-sec3b .ft3b-section-num-digit {
+    font-size: 17px; font-weight: 800;
+    letter-spacing: 0.5px;
   }
   #ft-sec3b .ft3b-section-num::after {
     content: ''; display: block;
@@ -97,9 +101,9 @@
 
   #ft-sec3b .th-empty {
     width: 160px;
-    font-size: 12px; font-weight: 600;
-    color: rgba(255,255,255,0.52);
-    letter-spacing: 2px; text-transform: uppercase;
+    font-size: 13px; font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 1.5px; text-transform: uppercase;
     font-family: 'Dosis', sans-serif;
   }
 
@@ -107,27 +111,27 @@
 
   #ft-sec3b .th-model-tag {
     display: inline-block;
-    font-size: 12px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
     font-family: 'Dosis', sans-serif;
     color: rgba(255,255,255,0.58);
     margin-bottom: 8px;
   }
 
   #ft-sec3b .th-model-name {
-    font-size: 15px; font-weight: 800;
+    font-size: 16px; font-weight: 800;
     color: #fff; line-height: 1.25;
     display: block; margin-bottom: 6px;
   }
 
   #ft-sec3b .th-model-power {
-    font-size: 22px; font-weight: 800;
+    font-size: 24px; font-weight: 800;
     color: #66913E; letter-spacing: -0.5px;
     display: block; line-height: 1.1;
   }
 
   #ft-sec3b .th-model-power-unit {
-    font-size: 12px; font-weight: 400;
+    font-size: 13px; font-weight: 400;
     color: rgba(102,145,62,0.7);
   }
 
@@ -160,9 +164,9 @@
   /* Celda label — FIX: prefijo #ft-sec3b supera el reset */
   #ft-sec3b .td-label {
     padding: 18px 24px;
-    font-size: 13px; font-weight: 600;
+    font-size: 14px; font-weight: 600;
     color: rgba(255,255,255,0.72);
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     background: rgba(13,30,36,0.5);
     white-space: nowrap;
     font-family: 'Dosis', sans-serif;
@@ -173,7 +177,7 @@
   /* Celda valor — FIX: prefijo #ft-sec3b supera el reset */
   #ft-sec3b .td-value {
     padding: 18px 24px;
-    font-size: 15px; font-weight: 400;
+    font-size: 16px; font-weight: 400;
     color: rgba(255,255,255,0.90);
     text-align: left;
     font-family: 'Dosis', sans-serif;
@@ -212,8 +216,8 @@
     text-decoration: none;
     padding: 11px 22px;
     font-family: 'Montserrat', sans-serif;
-    font-size: 12px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
     border: 1px solid rgba(102,145,62,0.55);
     border-radius: 3px; cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
@@ -274,7 +278,7 @@
 
   <div id="ft-3b-header">
     <div>
-      <div class="ft3b-section-num">03 — Modelos</div>
+      <div class="ft3b-section-num"><span class="ft3b-section-num-digit">03</span> — Modelos</div>
       <h2 class="ft3b-title">
         Elige la turbina<br>
         <span>correcta para tu proyecto.</span>
